@@ -872,7 +872,7 @@ const App = () => {
       </nav>
 
       {/* PAGE CONTENT */}
-      <main className="min-h-screen">
+      <main className={`min-h-screen ${currentPage !== 'home' ? 'pt-12 md:pt-16' : ''}`}>
         {renderPage()}
       </main>
 
