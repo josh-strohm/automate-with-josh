@@ -795,11 +795,11 @@ const App = () => {
       `}</style>
 
       {/* NAVIGATION */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'py-4 glass-panel shadow-lg' : 'py-6 bg-transparent'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 glass-panel shadow-lg' : 'py-5 bg-transparent'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Logo Representation */}
           <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigateTo('home')}>
-            <img src="/awj-logo.png" alt="AWJ Logo" className="h-24 md:h-40" />
+            <img src="/awj-logo.png" alt="AWJ Logo" className="h-20 md:h-32" />
             <div className="flex items-end gap-[2px] h-8">
               {[1, 2, 3, 4, 5].map((i) => (
                 <div
