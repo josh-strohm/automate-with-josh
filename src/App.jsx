@@ -708,9 +708,10 @@ const ContactPage = () => {
 const getPageFromPath = () => {
   const path = window.location.pathname;
   if (path === '/' || path === '') return 'home';
-  const page = path.substring(1); // remove leading slash
+  // Remove leading slash and trailing slash, then split on '?' to remove query params
+  const cleanPath = path.replace(/^\/+|\/+$/g, '').split('?')[0];
   const validPages = ['home', 'methodology', 'services', 'about', 'calendar', 'ai-assessment', 'contact'];
-  return validPages.includes(page) ? page : 'home';
+  return validPages.includes(cleanPath) ? cleanPath : 'home';
 };
 
 const App = () => {
