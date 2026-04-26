@@ -46,7 +46,7 @@ const HomePage = ({ navigate }) => (
         </h1>
 
         <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-          I help forward-thinking businesses identify hidden bottlenecks and streamline operations using custom AI automation. Stop guessing. Start dominating.
+          I help businesses find bottlenecks and fix them with AI automation. Stop guessing. Start growing.
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center">
@@ -76,14 +76,14 @@ const HomePage = ({ navigate }) => (
               The Gap is <span style={{ color: '#64748b' }}>Widening.</span>
             </h2>
             <p className="text-gray-400 text-lg mb-6">
-              Your competition isn't just working harder; they are working smarter. They are using AI to automate the mundane, leaving them with more time to steal your market share.
+              Your competitors use AI to work smarter. They automate routine tasks and win your customers.
             </p>
             <ul className="space-y-4">
               {[
-                "Manual data entry eating up hours.",
-                "Leads slipping through cracks due to slow response.",
-                "Operations dependent on 'tribal knowledge'.",
-                "Inability to scale without hiring more staff."
+                "Manual data entry wastes hours.",
+                "Slow replies lose leads.",
+                "Key knowledge stays with a few people.",
+                "You can't grow without hiring."
               ].map((point, idx) => (
                 <li key={idx} className="flex items-start gap-3">
                   <div className="mt-1 p-1 rounded bg-[#64748b]/20 text-[#64748b]">
@@ -134,7 +134,7 @@ const MethodologyPage = () => (
     <div className="container mx-auto px-6">
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <h1 className="text-5xl font-bold mb-6 text-white">My Methodology</h1>
-        <p className="text-xl text-gray-400">I don't just "install chatbots." I re-engineer your business logic to function autonomously. Here is the blueprint for how we work together.</p>
+        <p className="text-xl text-gray-400">I don't just "install chatbots." I rebuild how your business runs so it works on its own. Here is how we work together.</p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-8 mt-12 mb-32">
@@ -142,19 +142,19 @@ const MethodologyPage = () => (
           {
             icon: Search,
             title: "1. Identify",
-            desc: "I dive deep into your current operations to find the bottlenecks, the wasted time, and the friction points. We audit your P&L not for money, but for time.",
+            desc: "I study how your business runs. I find where time is wasted. We check your business to save time, not just money.",
             color: '#008080'
           },
           {
             icon: Workflow,
             title: "2. Architect",
-            desc: "I design a custom AI workflow that bridges your existing tools, creating a seamless pipeline of automation. No band-aid fixes, only structural improvements.",
+            desc: "I build AI systems that connect your tools. No quick fixes. Just real solutions that last.",
             color: '#1ac1ce'
           },
           {
             icon: CheckCircle2,
             title: "3. Implement",
-            desc: "I build, test, and deploy the solution. Then, I train your team to manage the new system, ensuring the profit margins widen immediately.",
+            desc: "I build and launch your system. Then I train your team to use it. This saves you money fast.",
             color: '#64748b'
           }
         ].map((step, idx) => (
@@ -184,7 +184,7 @@ const MethodologyPage = () => (
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">The <span className="text-[#64748b]">Anti-Fragile</span> Standard</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Automation shouldn't make your business rigid; it should make it resilient. I build systems based on three non-negotiable pillars.
+            Automation should help your business stay strong. I build systems on three core principles.
           </p>
         </div>
 
@@ -197,7 +197,7 @@ const MethodologyPage = () => (
               <h3 className="text-xl font-bold text-white">Security First</h3>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Your proprietary data is your moat. I implement enterprise-grade security protocols to ensure your AI systems are private, compliant, and protected from day one.
+              Your data is important. I use strong security to keep your AI systems safe and private from day one.
             </p>
           </div>
 
@@ -209,7 +209,7 @@ const MethodologyPage = () => (
               <h3 className="text-xl font-bold text-white">Human-Centric</h3>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              AI shouldn't replace your humanity; it should amplify it. My systems are designed to handle the robot work so your team can focus on creative, high-value strategy.
+              AI won't replace your team. It handles the boring work so your people can focus on what matters.
             </p>
           </div>
 
@@ -221,7 +221,7 @@ const MethodologyPage = () => (
               <h3 className="text-xl font-bold text-white">Modular Design</h3>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Business changes fast. I build systems that are modular and flexible, so when you pivot strategies, your automation infrastructure pivots with you instantly.
+              Business moves fast. I build systems that change when you change. No delays.
             </p>
           </div>
         </div>
@@ -239,7 +239,7 @@ const ServicesPage = ({ navigate }) => (
           Primary <span className="text-[#1ac1ce]">Solutions</span>
         </h1>
         <p className="text-xl text-gray-300 mb-8">
-          Every business is unique. I start by identifying exactly where AI will provide the most value for <span className="text-[#64748b] italic">your</span> specific operation. Once the bottlenecks are found, I build custom solutions using these powerful tools.
+          Every business is different. I find where AI helps you most. Then I build solutions with these tools.
         </p>
       </div>
 
@@ -257,7 +257,7 @@ const ServicesPage = ({ navigate }) => (
             </div>
             <h3 className="text-2xl font-bold mb-4 text-white">Automated Workflows (n8n)</h3>
             <p className="text-gray-400 text-lg mb-6">
-              The central nervous system of your business. I use n8n and other advanced tools to connect your apps, ensuring data flows automatically between them. No more manual copy-pasting or missed updates.
+              The heart of your business. I connect your apps so data moves automatically. No more copying and pasting.
             </p>
             <div className="flex gap-2">
               <span className="px-3 py-1 rounded-full bg-[#333] text-xs text-gray-300 border border-gray-700">n8n</span>
@@ -274,7 +274,7 @@ const ServicesPage = ({ navigate }) => (
           </div>
           <h3 className="text-xl font-bold mb-3 text-white">AI Voice Agents</h3>
           <p className="text-gray-400 text-sm">
-            Intelligent voice receptionists that handle inbound and outbound calls 24/7. They qualify leads, answer FAQs, and book appointments without you lifting a finger.
+            AI phone agents that answer calls 24/7. They talk to customers, answer questions, and book meetings.
           </p>
         </div>
 
@@ -285,7 +285,7 @@ const ServicesPage = ({ navigate }) => (
           </div>
           <h3 className="text-xl font-bold mb-3 text-white">AI Chatbots</h3>
           <p className="text-gray-400 text-sm">
-            Custom-trained on your business data. These aren't generic bots; they know your products, your policies, and your tone perfectly.
+            Chatbots trained on your business info. They know your products and how you talk to customers.
           </p>
         </div>
 
@@ -296,7 +296,7 @@ const ServicesPage = ({ navigate }) => (
           </div>
           <h3 className="text-xl font-bold mb-3 text-white">Automated Booking</h3>
           <p className="text-gray-400 text-sm">
-            Systems that nurture leads and automatically sync appointments to your calendar. Stop playing email tag and start taking meetings.
+            Systems that follow up with leads and add meetings to your calendar. No more email tag.
           </p>
         </div>
 
@@ -307,7 +307,7 @@ const ServicesPage = ({ navigate }) => (
           </div>
           <h3 className="text-xl font-bold mb-3 text-white">AI Websites</h3>
           <p className="text-gray-400 text-sm">
-            Stunning, high-performance websites built with AI-assisted design and copy. Optimized for speed, SEO, and conversion from day one.
+            Fast, beautiful websites built with AI. Made for speed, search engines, and getting customers.
           </p>
         </div>
 
@@ -316,7 +316,7 @@ const ServicesPage = ({ navigate }) => (
           <div className="relative z-10 max-w-xl">
             <h3 className="text-3xl font-bold mb-2">And Many Other Tools...</h3>
             <p className="opacity-90">
-              These are just the primary tools. I build <strong>custom solutions</strong> based entirely on what your business needs to succeed.
+              These are the main tools. I build <strong>custom solutions</strong> based on what your business needs.
             </p>
           </div>
           <button onClick={() => navigate('contact')} className="relative z-10 mt-6 md:mt-0 bg-[#1a1a1a] text-[#008080] px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-[#0d0d0d] transition-colors flex items-center gap-2">
@@ -380,21 +380,21 @@ const AboutPage = () => (
         </div>
 
         <div className="w-full md:w-7/12 pt-8">
-          <h1 className="text-5xl font-bold mb-8 text-white">I Am The Bridge Between <br /><span className="text-[#008080]">Tech</span> and <span className="text-[#1ac1ce]">Profit</span>.</h1>
+          <h1 className="text-5xl font-bold mb-8 text-white">I Bridge <br /><span className="text-[#008080]">Tech</span> and <span className="text-[#1ac1ce]">Profit</span>.</h1>
           <div className="space-y-8 text-lg text-gray-300 leading-relaxed">
             <p>
-              My name is Josh Strohm. I started <strong>AutomatewithJosh.com</strong> with a singular purpose: to stop businesses from bleeding money on inefficient processes.
+              My name is Josh Strohm. I started <strong>AutomatewithJosh.com</strong> to help businesses stop wasting money on inefficient processes.
             </p>
             <p>
-              In my years of consulting, I've seen brilliant businesses fail not because their product was bad, but because their operations were slow. They were drowning in admin work while their agile competitors swam past them.
+              In my years of consulting, I've seen great businesses fail because they were too slow. They were buried in admin work while faster competitors passed them.
             </p>
             <p>
-              I don't sell "magic buttons." I sell clarity. I look at your business, identify where the friction is, and I deploy intelligent systems to smooth it out.
+              I don't sell magic fixes. I bring clarity. I find the problems and use smart systems to solve them.
             </p>
 
             <div className="bg-[#1a1a1a] p-8 rounded-xl border-l-4 border-[#64748b] my-8">
               <p className="italic text-white text-xl font-medium">
-                "AI isn't just a buzzword to me. It's the greatest operational lever of our lifetime. If you aren't pulling it, your competition will."
+                "AI isn't just a buzzword to me. It's the most powerful tool of our time. If you aren't using it, your competition will."
               </p>
             </div>
 
@@ -402,15 +402,15 @@ const AboutPage = () => (
             <ul className="space-y-4">
               <li className="flex gap-4">
                 <CheckCircle2 className="text-[#1ac1ce] flex-shrink-0" />
-                <span><strong>No Fluff:</strong> I don't speak in jargon. I speak in ROI.</span>
+                <span><strong>No Fluff:</strong> I don't use big words. I focus on results.</span>
               </li>
               <li className="flex gap-4">
                 <CheckCircle2 className="text-[#1ac1ce] flex-shrink-0" />
-                <span><strong>Custom Builds:</strong> No cookie-cutter templates. Your business is unique, your AI should be too.</span>
+                <span><strong>Custom Builds:</strong> No copy-paste templates. Your business is unique, your AI should be too.</span>
               </li>
               <li className="flex gap-4">
                 <CheckCircle2 className="text-[#1ac1ce] flex-shrink-0" />
-                <span><strong>Long-Term Partner:</strong> I don't just build and leave. I ensure you know how to drive the car I built you.</span>
+                <span><strong>Long-Term Partner:</strong> I don't just build and leave. I teach you how to use what I build.</span>
               </li>
             </ul>
           </div>
