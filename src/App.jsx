@@ -64,6 +64,14 @@ const HomePage = ({ navigate }) => (
             View Solutions
           </button>
         </div>
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => navigate('calendar')}
+            className="text-[#1ac1ce] hover:text-white transition-colors text-lg font-medium"
+          >
+            Or book a free consultation →
+          </button>
+        </div>
       </div>
     </section>
 
@@ -319,9 +327,14 @@ const ServicesPage = ({ navigate }) => (
               These are the main tools. I build <strong>custom solutions</strong> based on what your business needs.
             </p>
           </div>
-          <button onClick={() => navigate('contact')} className="relative z-10 mt-6 md:mt-0 bg-[#1a1a1a] text-[#008080] px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-[#0d0d0d] transition-colors flex items-center gap-2">
-            Start Your Custom Build <ArrowRight size={20} />
-          </button>
+          <div className="flex flex-col md:flex-row gap-4 mt-6 md:mt-0 relative z-10">
+            <button onClick={() => navigate('contact')} className="bg-[#1a1a1a] text-[#008080] px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-[#0d0d0d] transition-colors flex items-center gap-2">
+              Start Your Custom Build <ArrowRight size={20} />
+            </button>
+            <button onClick={() => navigate('calendar')} className="bg-white text-[#008080] px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-gray-100 transition-colors">
+              Book Call
+            </button>
+          </div>
 
           {/* Abstract Decoration */}
           <div className="absolute right-0 top-0 h-full w-1/2 bg-[#1a1a1a] opacity-5 transform skew-x-12 translate-x-12"></div>
@@ -442,6 +455,27 @@ const AiAssessmentPage = () => (
       className="w-full h-screen border-0"
       title="AI Efficiency Assessment"
     />
+  </section>
+);
+
+const CalendarPage = () => (
+  <section className="min-h-screen bg-[#0d0d0d] overflow-hidden py-32">
+    <div className="container mx-auto px-6 max-w-6xl">
+      <div className="text-center mb-12">
+        <h1 className="text-5xl font-bold mb-6 text-white">Book a <span className="text-[#1ac1ce]">Consultation</span></h1>
+        <p className="text-xl text-gray-400">Select a time that works for you below.</p>
+      </div>
+      <div className="bg-white rounded-2xl overflow-hidden">
+        <iframe
+          src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2lnFVDVF4oKIzE6ZHDeeyE7cLSIGsE79nUYZPvsPWxz8a6Do7nJDVXq1uwyqJVtig3pMaB3tg7?gv=true"
+          style={{ border: 0 }}
+          width="100%"
+          height="600"
+          frameBorder="0"
+          title="Google Calendar Appointment scheduling"
+        ></iframe>
+      </div>
+    </div>
   </section>
 );
 
@@ -705,6 +739,7 @@ const App = () => {
       case 'methodology': return <MethodologyPage />;
       case 'services': return <ServicesPage navigate={navigateTo} />;
       case 'about': return <AboutPage />;
+      case 'calendar': return <CalendarPage />;
       case 'ai-assessment': return <AiAssessmentPage />;
       case 'contact': return <ContactPage />;
       default: return <HomePage navigate={navigateTo} />;
@@ -763,13 +798,20 @@ const App = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
-            {['Home', 'Methodology', 'Services', 'About', 'Contact'].map((item) => (
+            {[
+              { label: 'Home', route: 'home' },
+              { label: 'Methodology', route: 'methodology' },
+              { label: 'Services', route: 'services' },
+              { label: 'About', route: 'about' },
+              { label: 'Book Call', route: 'calendar' },
+              { label: 'Contact', route: 'contact' }
+            ].map((item) => (
               <button
-                key={item}
-                onClick={() => navigateTo(item.toLowerCase())}
-                className={`transition-colors uppercase ${currentPage === item.toLowerCase() ? 'text-[#1ac1ce] border-b border-[#1ac1ce]' : 'text-gray-300 hover:text-[#1ac1ce]'}`}
+                key={item.label}
+                onClick={() => navigateTo(item.route)}
+                className={`transition-colors uppercase ${currentPage === item.route ? 'text-[#1ac1ce] border-b border-[#1ac1ce]' : 'text-gray-300 hover:text-[#1ac1ce]'}`}
               >
-                {item}
+                {item.label}
               </button>
             ))}
             <button
@@ -790,13 +832,20 @@ const App = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full glass-panel border-t border-gray-800 p-6 flex flex-col gap-6 bg-[#0d0d0d]">
-            {['Home', 'Methodology', 'Services', 'About', 'Contact'].map((item) => (
+            {[
+              { label: 'Home', route: 'home' },
+              { label: 'Methodology', route: 'methodology' },
+              { label: 'Services', route: 'services' },
+              { label: 'About', route: 'about' },
+              { label: 'Book Call', route: 'calendar' },
+              { label: 'Contact', route: 'contact' }
+            ].map((item) => (
               <button
-                key={item}
-                onClick={() => navigateTo(item.toLowerCase())}
-                className={`text-left text-lg font-medium ${currentPage === item.toLowerCase() ? 'text-[#1ac1ce]' : 'text-white hover:text-[#1ac1ce]'}`}
+                key={item.label}
+                onClick={() => navigateTo(item.route)}
+                className={`text-left text-lg font-medium ${currentPage === item.route ? 'text-[#1ac1ce]' : 'text-white hover:text-[#1ac1ce]'}`}
               >
-                {item}
+                {item.label}
               </button>
             ))}
           </div>
@@ -819,7 +868,7 @@ const App = () => {
               </div>
             </div>
             <div className="flex gap-6 text-gray-400">
-              <button onClick={() => navigateTo('contact')} className="hover:text-[#1ac1ce]">Book Consultation</button>
+              <button onClick={() => navigateTo('calendar')} className="hover:text-[#1ac1ce]">Book Consultation</button>
               <button onClick={() => navigateTo('services')} className="hover:text-[#1ac1ce]">Services</button>
             </div>
             <div className="flex gap-4">
