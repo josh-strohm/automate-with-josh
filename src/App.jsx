@@ -705,8 +705,16 @@ const ContactPage = () => {
 
 // --- MAIN APP COMPONENT ---
 
+const getPageFromPath = () => {
+  const path = window.location.pathname;
+  if (path === '/' || path === '') return 'home';
+  const page = path.substring(1); // remove leading slash
+  const validPages = ['home', 'methodology', 'services', 'about', 'calendar', 'ai-assessment', 'contact'];
+  return validPages.includes(page) ? page : 'home';
+};
+
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState(getPageFromPath());
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -718,10 +726,20 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(getPageFromPath());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const navigateTo = (page) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setCurrentPage(page);
     setMobileMenuOpen(false);
+    const url = page === 'home' ? '/' : `/${page}`;
+    window.history.pushState(null, '', url);
   };
 
   const colors = {
