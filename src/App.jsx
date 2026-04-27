@@ -600,10 +600,11 @@ const ContactPage = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-gray-400 text-xs uppercase tracking-wider mb-2">Website</label>
+                          <label className="block text-gray-400 text-xs uppercase tracking-wider mb-2">Full Name</label>
                           <input
-                            name="businessWebsite"
-                            value={formData.businessWebsite}
+                            required
+                            name="fullName"
+                            value={formData.fullName}
                             onChange={handleChange}
                             type="text"
                             className="w-full bg-[#333] border border-gray-700 rounded p-3 text-white focus:outline-none focus:border-[#1ac1ce] transition-colors"
@@ -613,13 +614,13 @@ const ContactPage = () => {
 
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-gray-400 text-xs uppercase tracking-wider mb-2">Full Name</label>
+                          <label className="block text-gray-400 text-xs uppercase tracking-wider mb-2">Email Address</label>
                           <input
                             required
-                            name="fullName"
-                            value={formData.fullName}
+                            name="email"
+                            value={formData.email}
                             onChange={handleChange}
-                            type="text"
+                            type="email"
                             className="w-full bg-[#333] border border-gray-700 rounded p-3 text-white focus:outline-none focus:border-[#1ac1ce] transition-colors"
                           />
                         </div>
@@ -637,13 +638,12 @@ const ContactPage = () => {
                       </div>
 
                       <div>
-                        <label className="block text-gray-400 text-xs uppercase tracking-wider mb-2">Email Address</label>
+                        <label className="block text-gray-400 text-xs uppercase tracking-wider mb-2">Website</label>
                         <input
-                          required
-                          name="email"
-                          value={formData.email}
+                          name="businessWebsite"
+                          value={formData.businessWebsite}
                           onChange={handleChange}
-                          type="email"
+                          type="text"
                           className="w-full bg-[#333] border border-gray-700 rounded p-3 text-white focus:outline-none focus:border-[#1ac1ce] transition-colors"
                         />
                       </div>
