@@ -504,7 +504,7 @@ const ContactPage = () => {
       setStatus('SUBMITTING');
 
       try {
-        const response = await fetch('https://n8n.srv945929.hstgr.cloud/webhook/da8ce62d-100d-44a4-814c-46ae402df0f0', {
+        const response = await fetch('https://n8n.strohmpartners.com/webhook/da8ce62d-100d-44a4-814c-46ae402df0f0', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
