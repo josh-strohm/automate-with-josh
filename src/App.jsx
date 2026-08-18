@@ -358,7 +358,7 @@ const AboutPage = () => (
               {/* UPDATED: Profile Photo */}
               <div className="w-80 h-80 rounded-full bg-[#333] border-4 border-[#64748b] mb-8 flex items-center justify-center relative overflow-hidden">
                 <img
-                  src="/my-photo.png"
+                  src="/my-new-photo.png"
                   alt="Josh Strohm"
                   className="w-full h-full object-cover"
                 />
