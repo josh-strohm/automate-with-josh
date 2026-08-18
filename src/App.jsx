@@ -51,7 +51,7 @@ const HomePage = ({ navigate }) => (
 
         <div className="flex flex-col md:flex-row gap-4 justify-center">
           <button
-            onClick={() => navigate('ai-assessment')}
+            onClick={() => navigate('calendar')}
             className="px-8 py-4 rounded text-lg font-bold flex items-center justify-center gap-2 transition-all transform hover:scale-105 slate-glow text-white"
             style={{ backgroundColor: '#64748b' }}
           >
@@ -433,31 +433,6 @@ const AboutPage = () => (
   </section>
 );
 
-const AiAssessmentPage = () => (
-  <section className="min-h-screen bg-[#0d0d0d] overflow-hidden">
-    <iframe
-      srcDoc={`
-        <html>
-          <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-            <title>AI Efficiency Assessment</title>
-            <script async src="https://tally.so/widgets/embed.js"></script>
-            <style type="text/css">
-              html { margin: 0; height: 100%; overflow: hidden; }
-              iframe { position: absolute; top: 0; right: 0; bottom: 0; left: 0; border: 0; }
-            </style>
-          </head>
-          <body>
-            <iframe data-tally-src="https://tally.so/r/Med68Y?transparentBackground=1" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="AI Efficiency Assessment"></iframe>
-          </body>
-        </html>
-      `}
-      className="w-full h-screen border-0"
-      title="AI Efficiency Assessment"
-    />
-  </section>
-);
-
 const CalendarPage = () => (
   <section className="min-h-screen bg-[#0d0d0d] overflow-hidden py-32">
     <div className="container mx-auto px-6 max-w-6xl">
@@ -710,7 +685,7 @@ const getPageFromPath = () => {
   if (path === '/' || path === '') return 'home';
   // Remove leading slash and trailing slash, then split on '?' to remove query params
   const cleanPath = path.replace(/^\/+|\/+$/g, '').split('?')[0];
-  const validPages = ['home', 'methodology', 'services', 'about', 'calendar', 'ai-assessment', 'contact'];
+  const validPages = ['home', 'methodology', 'services', 'about', 'calendar', 'contact'];
   return validPages.includes(cleanPath) ? cleanPath : 'home';
 };
 
@@ -759,7 +734,6 @@ const App = () => {
       case 'services': return <ServicesPage navigate={navigateTo} />;
       case 'about': return <AboutPage />;
       case 'calendar': return <CalendarPage />;
-      case 'ai-assessment': return <AiAssessmentPage />;
       case 'contact': return <ContactPage />;
       default: return <HomePage navigate={navigateTo} />;
     }
@@ -834,7 +808,7 @@ const App = () => {
               </button>
             ))}
             <button
-              onClick={() => navigateTo('ai-assessment')}
+              onClick={() => navigateTo('calendar')}
               className="px-6 py-2 rounded font-bold transition-all transform hover:-translate-y-1 slate-glow text-white"
               style={{ backgroundColor: colors.slate }}
             >
