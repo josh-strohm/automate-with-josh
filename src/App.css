@@ -35,7 +35,7 @@ a { color: inherit; }
 .site-header { position: sticky; top: 0; z-index: 20; background: rgba(245, 244, 239, .96); border-bottom: 1px solid rgba(32, 42, 37, .11); backdrop-filter: blur(12px); }
 .header-inner { height: 82px; display: flex; align-items: center; justify-content: space-between; }
 .wordmark { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
-.wordmark-mark { width: 35px; height: 35px; display: grid; place-items: center; border: 1px solid var(--green); border-radius: 50%; color: var(--green); font-family: var(--serif); font-size: 17px; letter-spacing: -2px; padding-right: 2px; }
+.wordmark-mark { display: block; width: 35px; height: 35px; flex: 0 0 35px; }
 .wordmark-name, .footer-wordmark { font-size: 15px; letter-spacing: -.035em; font-weight: 700; }
 .wordmark-name span, .footer-wordmark span { color: var(--green); font-family: var(--serif); font-size: 18px; font-style: italic; font-weight: 500; }
 .main-nav { display: flex; align-items: center; gap: 31px; }
