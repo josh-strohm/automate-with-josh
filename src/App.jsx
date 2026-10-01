@@ -142,7 +142,7 @@ function SiteHeader({ currentPage, navigate, menuOpen, setMenuOpen }) {
     <header className="site-header">
       <div className="header-inner page-width">
         <SiteLink page="home" currentPage={currentPage} navigate={navigate} className="wordmark" aria-label="Automate with Josh home">
-          <span className="wordmark-mark" aria-hidden="true">aj</span>
+          <img className="wordmark-mark" src="/aj-monogram.svg" alt="" aria-hidden="true" />
           <span className="wordmark-name">automate <span>with josh</span></span>
         </SiteLink>
 
