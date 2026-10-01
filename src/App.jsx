@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -138,6 +138,25 @@ function SiteLink({ page, currentPage, navigate, children, className = '' }) {
 }
 
 function SiteHeader({ currentPage, navigate, menuOpen, setMenuOpen }) {
+  const toggleRef = useRef(null);
+  const wasOpen = useRef(false);
+
+  useEffect(() => {
+    if (wasOpen.current && !menuOpen) toggleRef.current?.focus();
+    wasOpen.current = menuOpen;
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape' && menuOpen) {
+        setMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [menuOpen, setMenuOpen]);
+
   return (
     <header className="site-header">
       <div className="header-inner page-width">
@@ -147,16 +166,18 @@ function SiteHeader({ currentPage, navigate, menuOpen, setMenuOpen }) {
         </SiteLink>
 
         <button
+          ref={toggleRef}
           className="menu-toggle"
           type="button"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
+          aria-controls="main-navigation"
           onClick={() => setMenuOpen((open) => !open)}
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
 
-        <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
+        <nav id="main-navigation" className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
           {pages.map(({ label, route }) => (
             <SiteLink key={route} page={route} currentPage={currentPage} navigate={navigate} className="nav-link">
               {label}
@@ -181,7 +202,7 @@ function HomePage({ currentPage, navigate }) {
       <section className="hero page-width">
         <div className="hero-copy">
           <Eyebrow>Automation for small businesses</Eyebrow>
-          <h1>Spend less time on <em>repeat work.</em></h1>
+          <h1 tabIndex="-1">Spend less time on <em>repeat work.</em></h1>
           <p className="hero-lede">
             I help small businesses simplify repetitive admin by connecting their tools, improving follow-up, and building small digital tools.
           </p>
@@ -270,7 +291,7 @@ function PageIntro({ eyebrow, title, children }) {
   return (
     <div className="page-intro">
       <Eyebrow>{eyebrow}</Eyebrow>
-      <h1>{title}</h1>
+      <h1 tabIndex="-1">{title}</h1>
       {children && <p>{children}</p>}
     </div>
   );
@@ -429,8 +450,7 @@ function ContactPage() {
       if (!response.ok) throw new Error('The request could not be sent.');
       setStatus('SUCCESS');
       setFormData({ businessName: '', businessWebsite: '', fullName: '', email: '', phone: '', message: '', consent: false });
-    } catch (error) {
-      console.error(error);
+    } catch {
       setStatus('ERROR');
     }
   };
@@ -459,7 +479,8 @@ function ContactPage() {
               <label className="form-span">What would you like to make easier? *<textarea required name="message" value={formData.message} onChange={handleChange} rows="4" /></label>
             </div>
             <label className="consent-label"><input type="checkbox" name="consent" checked={formData.consent} onChange={handleChange} /><span>I’m happy to receive a follow-up about this inquiry.</span></label>
-            <button className="button form-submit" type="submit" disabled={status === 'SUBMITTING'}>{status === 'SUBMITTING' ? 'Sending…' : 'Send your note'} <ArrowRight size={17} /></button>
+            <span className="visually-hidden" role="status" aria-live="polite">{status === 'SUBMITTING' ? 'Sending your message.' : ''}</span>
+            <button className="button form-submit" type="submit" disabled={status === 'SUBMITTING'} aria-busy={status === 'SUBMITTING'}>{status === 'SUBMITTING' ? 'Sending…' : 'Send your note'} <ArrowRight size={17} aria-hidden="true" /></button>
             {status === 'ERROR' && <p className="form-error" role="alert">Something went wrong while sending your note. Please try again or email me directly.</p>}
           </form>
         )}
@@ -515,6 +536,14 @@ export default function App() {
   useEffect(() => {
     const labels = { home: 'Business Automation and Process Consulting', services: 'Services', methodology: 'How I Work', about: 'About Josh', calendar: 'Book a Conversation', contact: 'Contact' };
     document.title = `${serviceBySlug[currentPage]?.title || labels[currentPage] || labels.home} | Automate with Josh`;
+  }, [currentPage]);
+
+  const previousPage = useRef(currentPage);
+  useEffect(() => {
+    if (previousPage.current !== currentPage) {
+      document.querySelector('main h1')?.focus();
+      previousPage.current = currentPage;
+    }
   }, [currentPage]);
 
   const navigate = (page) => {
