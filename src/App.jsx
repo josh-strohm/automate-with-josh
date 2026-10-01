@@ -25,18 +25,18 @@ const services = [
     slug: 'workflow-automation',
     icon: <Workflow />,
     title: 'Workflow automation',
-    text: 'Connect the apps your team uses so routine information moves between them with less manual entry.',
+    text: 'Connect the apps your team uses to move routine information without retyping it.',
     examples: 'n8n · Make · Zapier · APIs',
     headline: <>Move work between tools<br /><em>with fewer hand-offs.</em></>,
-    intro: 'I connect the tools you already use so routine work moves from one step to the next with less manual copying and fewer hand-offs.',
+    intro: 'I connect the tools you already use so routine work can move from one step to the next without someone copying the same details along the way.',
     focusTitle: 'Move routine work forward automatically.',
-    focusCopy: 'A workflow can move a new inquiry from your inbox into a tracker, create a follow-up task, and tell its owner it is ready. Your team spends less time moving information and more time acting on it.',
+    focusCopy: 'For example, a workflow can move a new inquiry from your inbox into a tracker, create a follow-up task, and let its owner know it is ready.',
     projects: [
       'Copy new customer or order details between systems without retyping them.',
       'Create tasks and notify the right teammate when a request reaches the next step.',
       'Collect updates from a form, spreadsheet, or inbox into one dependable view.',
     ],
-    goodFit: 'This helps when a repeatable process crosses several apps and someone has to move the same details between them.',
+    goodFit: 'Useful when a repeatable process crosses several apps and someone has to copy the same details between them.',
     care: 'I show the workflow status and flag errors for review. A missing field or lost connection should not go unnoticed.',
   },
   {
@@ -44,10 +44,10 @@ const services = [
     slug: 'chat-and-voice-assistants',
     icon: <MessageSquareText />,
     title: 'Chat and voice assistants',
-    text: 'Handle straightforward questions, capture key details, and route the unusual requests to your team. For internal use, AI can also help staff find information or prepare a first draft.',
+    text: 'Answer common questions, collect key details, and pass other requests to your team. An internal assistant can also help staff find information or prepare a first draft.',
     examples: 'Website chat · AI phone assistant · Internal search',
     headline: <>Quick answers for<br /><em>common questions.</em></>,
-    intro: 'A website or phone assistant can answer common questions, collect context, and pass a conversation to your team when a person needs to step in.',
+    intro: 'A website or phone assistant can answer common questions and collect context. When someone needs to step in, it can pass the conversation to your team.',
     focusTitle: 'Answer common questions, then hand off.',
     focusCopy: 'A website or phone assistant can use information you approve to answer routine questions and pass the conversation to your team with a summary. An internal assistant can help staff find the right document or prepare a first draft.',
     projects: [
@@ -63,10 +63,10 @@ const services = [
     slug: 'lead-and-appointment-follow-up',
     icon: <Clock3 />,
     title: 'Lead and appointment follow-up',
-    text: 'Help every inquiry receive a timely response and make it easier for customers to book, reschedule, and know what happens next.',
+    text: 'Confirm inquiries, send appointment reminders, and make booking or rescheduling details easy to find.',
     examples: 'Intake · Reminders · Scheduling',
     headline: <>A timely follow-up,<br /><em>for every inquiry.</em></>,
-    intro: 'A follow-up sequence sends inquiry confirmations and appointment reminders, then shows your team which requests need attention.',
+    intro: 'I can set up inquiry confirmations and appointment reminders, with a clear view for your team of which requests still need attention.',
     focusTitle: 'Keep each next step visible.',
     focusCopy: 'Automate confirmations and appointment reminders within your existing process. Your team can see which conversations need a response.',
     projects: [
@@ -74,7 +74,7 @@ const services = [
       'Offer a booking link, then send reminders and rescheduling details.',
       'Prompt a personal follow-up when someone has not replied or a next step is due.',
     ],
-    goodFit: 'Use this service to give each inquiry a timely reply and keep upcoming appointments on track.',
+    goodFit: 'Useful when inquiries need a prompt acknowledgment or customers often need booking and rescheduling reminders.',
     care: 'I write messages to match your process, schedule them at sensible times, and respect customer preferences. Your team can see the conversation and step in when context matters.',
   },
   {
@@ -82,7 +82,7 @@ const services = [
     slug: 'websites-and-digital-tools',
     icon: <ArrowUpRight />,
     title: 'Websites and digital tools',
-    text: 'Refresh or build a focused website that explains what you do and makes it easy for the right people to get in touch. I can also create small tools for a specific business need.',
+    text: 'Build or refresh a focused website, or create a small digital tool for a specific business need.',
     examples: 'Website refresh · Landing pages · Custom intake tools',
     headline: <>A website that shows<br /><em>visitors what to do next.</em></>,
     intro: 'I build focused websites and small tools that make your service easier to understand and the next step easier to take.',
@@ -93,7 +93,7 @@ const services = [
       'Create a focused landing page and intake form for a particular audience or offer.',
       'Build a small digital tool around a repeatable task your current software does not cover.',
     ],
-    goodFit: 'I can refresh a site with current service details or build a small tool for a task your software does not cover.',
+    goodFit: 'Useful when your website no longer explains your services clearly, or your current software misses a small but recurring task.',
     care: 'I make the site easy to update and use on phones. Before building, we agree on content, ownership, and connections to existing systems.',
   },
   {
@@ -180,10 +180,10 @@ function HomePage({ currentPage, navigate }) {
     <>
       <section className="hero page-width">
         <div className="hero-copy">
-          <Eyebrow>Automation for growing businesses</Eyebrow>
-          <h1>Make more room for <em>good work.</em></h1>
+          <Eyebrow>Automation for small businesses</Eyebrow>
+          <h1>Spend less time on <em>repeat work.</em></h1>
           <p className="hero-lede">
-            I help small teams cut repetitive steps so people can spend more time with customers and on creative work.
+            I help small businesses simplify repetitive admin by connecting their tools, improving follow-up, and building small digital tools.
           </p>
           <div className="hero-actions">
             <button className="button" onClick={() => navigate('calendar')}>
@@ -193,7 +193,7 @@ function HomePage({ currentPage, navigate }) {
               Explore services <ArrowUpRight size={16} />
             </button>
           </div>
-          <div className="hero-note"><span className="note-rule" />Independent consultant · Strategy, build, handover</div>
+          <div className="hero-note"><span className="note-rule" />Independent consultant · Planning, build, handover</div>
         </div>
 
         <figure className="hero-portrait">
@@ -207,12 +207,12 @@ function HomePage({ currentPage, navigate }) {
 
       <section className="intro-band">
         <div className="page-width intro-band-inner">
-          <Eyebrow>The work behind the work</Eyebrow>
+          <Eyebrow>Where I start</Eyebrow>
           <div className="intro-band-content">
-            <h2>Make the hand-offs easier to manage.</h2>
+            <h2>Start with the work your team repeats.</h2>
             <div>
-              <p>I connect repeated steps and make follow-ups visible so information reaches the right person with less checking.</p>
-              <p>We look at how your team works, then simplify the steps people repeat each day.</p>
+              <p>I look at how information moves through your business, where work gets stuck, and which details people have to enter more than once.</p>
+              <p>Then we decide whether a process change, an existing tool, or automation is the right next step.</p>
             </div>
           </div>
         </div>
@@ -222,24 +222,24 @@ function HomePage({ currentPage, navigate }) {
         <div className="section-heading-row">
           <div>
             <Eyebrow>Where I can help</Eyebrow>
-            <h2>Systems that fit.<br /><em>Less busywork.</em></h2>
+            <h2>Practical help for<br /><em>everyday work.</em></h2>
           </div>
-          <p className="section-aside">I choose a tool or process change that fits the work.</p>
+          <p className="section-aside">The right approach depends on the task, the tools, and the people doing it.</p>
         </div>
         <div className="service-list">
           <SiteLink page="workflow-automation" currentPage={currentPage} navigate={navigate} className="service-row">
             <span className="service-number">01</span><Workflow size={21} aria-hidden="true" />
-            <div><h3>Workflows that connect your tools</h3><p>Move information between the systems you already use with less manual entry.</p></div>
+            <div><h3>Workflows between your tools</h3><p>Move the same details across apps without entering them more than once.</p></div>
             <ArrowUpRight className="row-arrow" size={19} aria-hidden="true" />
           </SiteLink>
           <SiteLink page="chat-and-voice-assistants" currentPage={currentPage} navigate={navigate} className="service-row">
             <span className="service-number">02</span><MessageSquareText size={21} aria-hidden="true" />
-            <div><h3>AI assistants for routine questions</h3><p>Answer common customer questions or help staff find information. Your team stays involved when a request needs judgment.</p></div>
+            <div><h3>Assistants for common questions</h3><p>Answer routine questions or help staff find existing information, with a person handling requests that need judgment.</p></div>
             <ArrowUpRight className="row-arrow" size={19} aria-hidden="true" />
           </SiteLink>
           <SiteLink page="lead-and-appointment-follow-up" currentPage={currentPage} navigate={navigate} className="service-row">
             <span className="service-number">03</span><Clock3 size={21} aria-hidden="true" />
-            <div><h3>Clear next steps for each inquiry</h3><p>Send inquiries to the right person and keep the next step visible.</p></div>
+            <div><h3>Inquiry and appointment follow-up</h3><p>Confirm requests, send reminders, and show your team which conversations need a reply.</p></div>
             <ArrowUpRight className="row-arrow" size={19} aria-hidden="true" />
           </SiteLink>
         </div>
@@ -249,12 +249,12 @@ function HomePage({ currentPage, navigate }) {
       <section className="approach-band">
         <div className="page-width approach-grid">
           <div>
-            <Eyebrow>From first conversation to handover</Eyebrow>
-            <h2>Understand first.<br /><em>Automate second.</em></h2>
+            <Eyebrow>How a project takes shape</Eyebrow>
+            <h2>Understand the process.<br /><em>Then choose a change.</em></h2>
           </div>
           <div className="approach-steps">
-            <div><span>01</span><p><strong>Listen and map</strong>We map the people and tools involved, then agree on what a good result looks like.</p></div>
-            <div><span>02</span><p><strong>Agree on a first step</strong>I explain the options, then we choose a change that fits your work.</p></div>
+            <div><span>01</span><p><strong>Listen and map</strong>We follow the task through the people and tools involved, and agree on what should improve.</p></div>
+            <div><span>02</span><p><strong>Agree on a first step</strong>I explain the options and trade-offs, then we choose what to try.</p></div>
             <div><span>03</span><p><strong>Build and hand over</strong>I set it up, walk your team through it, and explain how to get support.</p></div>
             <button className="text-link" onClick={() => navigate('methodology')}>A closer look at how I work <ArrowRight size={16} /></button>
           </div>
@@ -281,7 +281,7 @@ function ServicesPage({ navigate }) {
     <>
       <section className="page-width page-top">
         <PageIntro eyebrow="Services" title={<>Systems for your work.<br /><em>Fewer repeated steps.</em></>}>
-          I map your process with the people who use it. Then I recommend tools when they can make the work easier.
+          I learn how the work gets done, then explain which process or tool changes could help and what each would involve.
         </PageIntro>
         <div className="services-detail-list">
           {services.map((item) => (
@@ -349,7 +349,7 @@ function MethodologyPage({ navigate }) {
     <>
       <section className="page-width page-top">
         <PageIntro eyebrow="How I work" title={<>Clear steps.<br /><em>You stay involved.</em></>}>
-          I work with your team from the first process map through handover. You’ll know why we made the change and how to use it.
+          I work with your team from the first process map through handover. We agree on the change together, and I explain how to use it.
         </PageIntro>
         <div className="method-list">
           {steps.map(([no, title, text]) => <article key={no}><span>{no}</span><div><h2>{title}</h2><p>{text}</p></div></article>)}
@@ -378,10 +378,10 @@ function AboutPage({ navigate }) {
         </div>
         <div className="about-copy">
           <PageIntro eyebrow="About Josh" title={<>Meet Josh<br />Strohm.</>}>
-            I started Automate with Josh to help businesses cut repetitive admin and make more time for customer work.
+            I started Automate with Josh to help small businesses spend less time on repetitive admin and keep customer work moving.
           </PageIntro>
-          <p>As a business grows, a process can become harder to manage. I work with the people doing it to find a change that fits their day-to-day work.</p>
-          <p>Some projects connect the apps a team already uses. Others set up routine follow-up or help staff find information with an AI assistant.</p>
+          <p>As a business grows, a process that once worked can become harder to keep track of. I talk with the people doing the work to understand what gets repeated, delayed, or missed.</p>
+          <p>Some projects connect apps a team already uses. Others organize inquiry follow-up, or help staff find information with an AI assistant.</p>
           <p>AI is one option. I recommend it when it can handle a specific part of the work; otherwise, a workflow or process change may fit better.</p>
           <button className="text-link" onClick={() => navigate('calendar')}>Talk with Josh <ArrowRight size={16} /></button>
         </div>
@@ -395,7 +395,7 @@ function CalendarPage() {
   return (
     <section className="page-width page-top booking-page">
       <PageIntro eyebrow="Start with a conversation" title={<>Let’s talk about<br /><em>how work gets done.</em></>}>
-        Pick a time for a short introduction. We’ll discuss the process you’d like to improve and whether I can help.
+        Choose a time for an introduction. We’ll talk about the process you have in mind and whether my work is a good fit.
       </PageIntro>
       <div className="calendar-frame">
         <iframe
@@ -439,9 +439,9 @@ function ContactPage() {
     <section className="page-width page-top contact-layout">
       <div className="contact-intro">
         <PageIntro eyebrow="Contact" title={<>Tell me what<br /><em>you’d like to improve.</em></>}>
-          A few details will help me understand your project. You can also book a time directly.
+          Tell me a little about the task or process you want to improve. If you prefer, you can book a time to talk instead.
         </PageIntro>
-        <div className="contact-note"><span className="note-icon"><Clock3 size={19} /></span><p><strong>Prefer to talk?</strong><br />Book a 45-minute appointment and we’ll start there.</p></div>
+        <div className="contact-note"><span className="note-icon"><Clock3 size={19} /></span><p><strong>Prefer to talk?</strong><br />Book a 45-minute conversation to tell me what you have in mind.</p></div>
         <a className="text-link" href="mailto:hi@automatewithjosh.com">hi@automatewithjosh.com <ArrowUpRight size={16} /></a>
       </div>
       <div className="form-panel">
@@ -449,7 +449,7 @@ function ContactPage() {
           <div className="form-success" role="status"><span className="success-icon"><Check size={24} /></span><h2>Thanks for reaching out.</h2><p>Your note is on its way. I’ll be in touch soon.</p><button className="text-link" onClick={() => setStatus('IDLE')}>Send another message <ArrowRight size={16} /></button></div>
         ) : (
           <form onSubmit={handleSubmit}>
-            <div className="form-heading"><h2>A little about your project</h2><p>All fields marked * are required.</p></div>
+            <div className="form-heading"><h2>Tell me about the work</h2><p>Fields marked * are required.</p></div>
             <div className="form-grid">
               <label>Business name *<input required name="businessName" value={formData.businessName} onChange={handleChange} autoComplete="organization" /></label>
               <label>Your name *<input required name="fullName" value={formData.fullName} onChange={handleChange} autoComplete="name" /></label>
@@ -472,7 +472,7 @@ function Callout({ navigate }) {
   return (
     <section className="callout-band">
       <div className="page-width callout-inner">
-        <div><Eyebrow>Have a process in mind?</Eyebrow><h2>Talk through your workflow.</h2><p>We can find a change that fits how your team works.</p></div>
+        <div><Eyebrow>Have a task in mind?</Eyebrow><h2>Let’s talk it through.</h2><p>Tell me what takes time or gets stuck, and we can discuss a useful next step.</p></div>
         <button className="button button-light" onClick={() => navigate('calendar')}>Book a conversation <ArrowUpRight size={17} /></button>
       </div>
     </section>
@@ -483,10 +483,10 @@ function SiteFooter({ currentPage, navigate }) {
   return (
     <footer className="site-footer">
       <div className="page-width footer-main">
-        <div><SiteLink page="home" currentPage={currentPage} navigate={navigate} className="footer-wordmark">automate <span>with josh</span></SiteLink><p>Automation, process reviews, and small digital tools for businesses.</p></div>
+        <div><SiteLink page="home" currentPage={currentPage} navigate={navigate} className="footer-wordmark">automate <span>with josh</span></SiteLink><p>Workflow automation, process reviews, and small digital tools for small businesses.</p></div>
         <div className="footer-links"><SiteLink page="services" currentPage={currentPage} navigate={navigate}>Services</SiteLink><SiteLink page="methodology" currentPage={currentPage} navigate={navigate}>How I work</SiteLink><SiteLink page="about" currentPage={currentPage} navigate={navigate}>About</SiteLink><SiteLink page="contact" currentPage={currentPage} navigate={navigate}>Contact</SiteLink><a href="https://www.linkedin.com/in/joshua-w-strohm/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={13} /></a><a href="https://x.com/joshwstrohm" target="_blank" rel="noopener noreferrer">X <ArrowUpRight size={13} /></a><a href="mailto:hi@automatewithjosh.com">Email <ArrowUpRight size={13} /></a></div>
       </div>
-      <div className="page-width footer-bottom"><span>© {new Date().getFullYear()} Automate with Josh</span><span>Josh works with your team from planning through handover.</span></div>
+      <div className="page-width footer-bottom"><span>© {new Date().getFullYear()} Automate with Josh</span><span>From process review through build and handover.</span></div>
     </footer>
   );
 }
