@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
+  ArrowDownToLine,
   Check,
   Clock3,
   Menu,
@@ -17,6 +18,7 @@ const pages = [
   { label: 'How I work', route: 'methodology' },
   { label: 'About', route: 'about' },
   { label: 'Contact', route: 'contact' },
+  { label: 'Library', route: 'library' },
 ];
 
 const pagePath = (page) => page === 'home' ? '/' : `/${page}`;
@@ -341,6 +343,135 @@ function ContactPage() {
   );
 }
 
+function LibraryPage() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('IDLE');
+  const [entitlements, setEntitlements] = useState([]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!normalizedEmail) return;
+
+    setStatus('SUBMITTING');
+    setEntitlements([]);
+    try {
+      // The server performs the email-keyed entitlement lookup and returns only
+      // the skills and download URLs attached to that email address.
+      const response = await fetch('/api/library', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: normalizedEmail }),
+      });
+      if (!response.ok) throw new Error('The library lookup could not be completed.');
+
+      const result = await response.json();
+      setEntitlements(Array.isArray(result.entitlements) ? result.entitlements : []);
+      setStatus('SUCCESS');
+    } catch (error) {
+      console.error(error);
+      setStatus('ERROR');
+    }
+  };
+
+  return (
+    <section className="page-width page-top library-page">
+      <PageIntro eyebrow="Your purchases" title={<>Your skill<br /><em>library.</em></>}>
+        Enter the email address you used at checkout to find your purchased skills and download their package files.
+      </PageIntro>
+
+      <div className="library-lookup form-panel">
+        <form onSubmit={handleSubmit}>
+          <div className="form-heading"><h2>Find your purchases</h2><p>Use the email address from your receipt.</p></div>
+          <label className="library-email-label" htmlFor="library-email">Email address</label>
+          <div className="library-form-row">
+            <input
+              id="library-email"
+              required
+              type="email"
+              name="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              autoComplete="email"
+              placeholder="you@example.com"
+            />
+            <button className="button" type="submit" disabled={status === 'SUBMITTING'}>
+              {status === 'SUBMITTING' ? 'Looking up…' : 'View my library'} <ArrowRight size={17} />
+            </button>
+          </div>
+          {status === 'ERROR' && <p className="form-error" role="alert">We couldn’t load your library just now. Please try again in a moment.</p>}
+        </form>
+      </div>
+
+      {status === 'SUCCESS' && (
+        <section className="library-results" aria-live="polite" aria-label="Your purchased skills">
+          {entitlements.length === 0 ? (
+            <div className="library-empty">
+              <Eyebrow>Nothing here yet</Eyebrow>
+              <h2>No purchases found for this email.</h2>
+              <p>Double-check the address on your receipt and try again. If you used a different email at checkout, search with that one.</p>
+            </div>
+          ) : (
+            <>
+              <div className="library-results-heading"><Eyebrow>Ready when you are</Eyebrow><h2>Your purchased skills</h2></div>
+              <div className="library-skill-list">
+                {entitlements.map((entitlement, index) => {
+                  const skill = entitlement.skill || entitlement;
+                  const packages = Array.isArray(entitlement.packages)
+                    ? entitlement.packages
+                    : Array.isArray(skill.packages) ? skill.packages : [];
+                  const skillTitle = skill.title || skill.name || 'Untitled skill';
+                  const key = skill.id || skill.slug || `${skillTitle}-${index}`;
+
+                  return (
+                    <article className="library-skill-card" key={key}>
+                      <div className="library-skill-copy">
+                        <Eyebrow>Your purchase</Eyebrow>
+                        <h3>{skillTitle}</h3>
+                        {skill.description && <p>{skill.description}</p>}
+                      </div>
+                      <div className="library-packages">
+                        {packages.length === 0 ? (
+                          <p className="library-no-files">Package files for this skill aren’t available yet. Please check back soon.</p>
+                        ) : packages.map((packageFile, packageIndex) => {
+                          const fileKey = packageFile.id || `${packageFile.agentKey || 'package'}-${packageIndex}`;
+                          const agentKey = packageFile.agentKey || 'your AI agent';
+                          const href = packageFile.downloadUrl || packageFile.fileUrl;
+                          const safeDownload = typeof href === 'string' && (/^https:\/\//i.test(href) || href.startsWith('/'));
+
+                          return (
+                            <div className="library-package" key={fileKey}>
+                              <div>
+                                <h4>{packageFile.fileName || packageFile.filename || `${skillTitle} package`}</h4>
+                                {packageFile.agentName ? (
+                                  <p>For {packageFile.agentName}{packageFile.version ? ` · ${packageFile.version}` : ''}</p>
+                                ) : (
+                                  <p className="library-agent-fallback">This package is for {agentKey}. We don’t have details for this AI agent yet, but the package is ready to download.</p>
+                                )}
+                              </div>
+                              {safeDownload ? (
+                                <a className="button button-small library-download" href={href} download>
+                                  Download <ArrowDownToLine size={15} />
+                                </a>
+                              ) : (
+                                <span className="library-download-pending">Download unavailable</span>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </>
+          )}
+        </section>
+      )}
+    </section>
+  );
+}
+
 function Callout({ navigate }) {
   return (
     <section className="callout-band">
@@ -357,7 +488,7 @@ function SiteFooter({ currentPage, navigate }) {
     <footer className="site-footer">
       <div className="page-width footer-main">
         <div><SiteLink page="home" currentPage={currentPage} navigate={navigate} className="footer-wordmark">automate <span>with josh</span></SiteLink><p>Practical automation for the way your business works.</p></div>
-        <div className="footer-links"><SiteLink page="services" currentPage={currentPage} navigate={navigate}>Services</SiteLink><SiteLink page="methodology" currentPage={currentPage} navigate={navigate}>How I work</SiteLink><SiteLink page="about" currentPage={currentPage} navigate={navigate}>About</SiteLink><SiteLink page="contact" currentPage={currentPage} navigate={navigate}>Contact</SiteLink><a href="https://www.linkedin.com/in/joshua-w-strohm/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={13} /></a><a href="https://x.com/joshwstrohm" target="_blank" rel="noopener noreferrer">X <ArrowUpRight size={13} /></a><a href="mailto:hi@automatewithjosh.com">Email <ArrowUpRight size={13} /></a></div>
+        <div className="footer-links"><SiteLink page="services" currentPage={currentPage} navigate={navigate}>Services</SiteLink><SiteLink page="methodology" currentPage={currentPage} navigate={navigate}>How I work</SiteLink><SiteLink page="about" currentPage={currentPage} navigate={navigate}>About</SiteLink><SiteLink page="contact" currentPage={currentPage} navigate={navigate}>Contact</SiteLink><SiteLink page="library" currentPage={currentPage} navigate={navigate}>Library</SiteLink><a href="https://www.linkedin.com/in/joshua-w-strohm/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={13} /></a><a href="https://x.com/joshwstrohm" target="_blank" rel="noopener noreferrer">X <ArrowUpRight size={13} /></a><a href="mailto:hi@automatewithjosh.com">Email <ArrowUpRight size={13} /></a></div>
       </div>
       <div className="page-width footer-bottom"><span>© {new Date().getFullYear()} Automate with Josh</span><span>Built around people, process, and useful technology.</span></div>
     </footer>
@@ -366,7 +497,7 @@ function SiteFooter({ currentPage, navigate }) {
 
 function getPageFromPath() {
   const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
-  const validPages = ['methodology', 'services', 'about', 'calendar', 'contact'];
+  const validPages = ['methodology', 'services', 'about', 'calendar', 'contact', 'library'];
   return validPages.includes(path) ? path : 'home';
 }
 
@@ -380,7 +511,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const labels = { home: 'Practical Business Automation', services: 'Services', methodology: 'How I Work', about: 'About Josh', calendar: 'Book a Conversation', contact: 'Contact' };
+    const labels = { home: 'Practical Business Automation', services: 'Services', methodology: 'How I Work', about: 'About Josh', calendar: 'Book a Conversation', contact: 'Contact', library: 'Your Skill Library' };
     document.title = `${labels[currentPage]} | Automate with Josh`;
   }, [currentPage]);
 
@@ -398,6 +529,7 @@ export default function App() {
     case 'about': content = <AboutPage navigate={navigate} />; break;
     case 'calendar': content = <CalendarPage />; break;
     case 'contact': content = <ContactPage />; break;
+    case 'library': content = <LibraryPage />; break;
     default: content = <HomePage navigate={navigate} />;
   }
 
