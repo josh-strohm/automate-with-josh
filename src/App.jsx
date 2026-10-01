@@ -25,19 +25,19 @@ const services = [
     slug: 'workflow-automation',
     icon: <Workflow />,
     title: 'Workflow automation',
-    text: 'Connect the apps your team depends on. Reduce repetitive data entry, keep hand-offs moving, and make routine processes more consistent.',
+    text: 'Connect the apps your team uses so routine information moves between them with less manual entry.',
     examples: 'n8n · Make · Zapier · APIs',
-    headline: <>Connect the steps that<br /><em>slow good work down.</em></>,
-    intro: 'When the same information has to be copied, checked, and sent by hand, small delays add up. I connect the tools you already use so routine work moves forward with fewer hand-offs.',
-    focusTitle: 'Let routine work move on its own.',
-    focusCopy: 'A workflow can take a new inquiry from your inbox into a tracker, create the right follow-up task, and let the owner know it is ready. Your team can spend less time moving information and more time acting on it.',
+    headline: <>Move work between tools<br /><em>with fewer hand-offs.</em></>,
+    intro: 'I connect the tools you already use so routine work moves from one step to the next with less manual copying and fewer hand-offs.',
+    focusTitle: 'Move routine work forward automatically.',
+    focusCopy: 'A workflow can move a new inquiry from your inbox into a tracker, create a follow-up task, and tell its owner it is ready. Your team spends less time moving information and more time acting on it.',
     projects: [
       'Copy new customer or order details between systems without retyping them.',
       'Create tasks and notify the right teammate when a request reaches the next step.',
       'Collect updates from a form, spreadsheet, or inbox into one dependable view.',
     ],
-    goodFit: 'A repeatable process crosses several apps, and people are spending time copying details or checking whether a hand-off happened.',
-    care: 'The workflow should make its status visible and flag errors for a person to review. I map the exceptions as well as the happy path, so a missing field or disconnected account does not fail silently.',
+    goodFit: 'This helps when a repeatable process crosses several apps and someone has to move the same details between them.',
+    care: 'I show the workflow status and flag errors for review. A missing field or lost connection should not go unnoticed.',
   },
   {
     no: '02',
@@ -46,17 +46,17 @@ const services = [
     title: 'Chat and voice assistants',
     text: 'Handle straightforward questions, capture key details, and route the unusual requests to your team. For internal use, AI can also help staff find information or prepare a first draft.',
     examples: 'Website chat · AI phone assistant · Internal search',
-    headline: <>Quick answers for the<br /><em>questions you know.</em></>,
-    intro: 'A useful assistant can answer common questions, gather the details your team needs, and make a clear hand-off when a conversation needs a person.',
-    focusTitle: 'Give people a helpful first response.',
-    focusCopy: 'A website or phone assistant can use your approved information to respond to routine questions, collect context, and pass the conversation to your team with a useful summary. Internal assistants can help staff find the right document or prepare a first draft.',
+    headline: <>Quick answers for<br /><em>common questions.</em></>,
+    intro: 'A website or phone assistant can answer common questions, collect context, and pass a conversation to your team when a person needs to step in.',
+    focusTitle: 'Answer common questions, then hand off.',
+    focusCopy: 'A website or phone assistant can use information you approve to answer routine questions and pass the conversation to your team with a summary. An internal assistant can help staff find the right document or prepare a first draft.',
     projects: [
       'Answer common questions using your current service details, policies, or knowledge base.',
       'Collect contact details and the reason for a call or message before routing it.',
       'Help staff search internal guidance and prepare drafts for their review.',
     ],
-    goodFit: 'Your team answers the same straightforward questions often, or people need a faster way to find information that already exists.',
-    care: 'The assistant needs clear source material and a safe way to say it does not know. Sensitive requests and decisions stay with a person, with an obvious route to reach your team.',
+    goodFit: 'This fits when customers ask the same questions often or staff need to find information that already exists.',
+    care: 'I give the assistant clear source material and a way to say when it does not know. A person handles sensitive requests and decisions, and customers can reach your team.',
   },
   {
     no: '03',
@@ -65,17 +65,17 @@ const services = [
     title: 'Lead and appointment follow-up',
     text: 'Help every inquiry receive a timely response and make it easier for customers to book, reschedule, and know what happens next.',
     examples: 'Intake · Reminders · Scheduling',
-    headline: <>A thoughtful next step,<br /><em>right on time.</em></>,
-    intro: 'New inquiries and upcoming appointments are easy to miss when follow-up depends on someone remembering. A clear sequence helps customers know what happens next and helps your team stay on top of each request.',
-    focusTitle: 'Keep every inquiry moving.',
-    focusCopy: 'From a first confirmation to a reminder before an appointment, follow-up can happen at the right point in your existing process. Your team can see who has responded, what is booked, and which conversations need attention.',
+    headline: <>A timely follow-up,<br /><em>for every inquiry.</em></>,
+    intro: 'A follow-up sequence sends inquiry confirmations and appointment reminders, then shows your team which requests need attention.',
+    focusTitle: 'Keep each next step visible.',
+    focusCopy: 'Automate confirmations and appointment reminders within your existing process. Your team can see which conversations need a response.',
     projects: [
       'Send an immediate confirmation and alert the right person when an inquiry arrives.',
-      'Offer a booking link, then send useful reminders and rescheduling details.',
+      'Offer a booking link, then send reminders and rescheduling details.',
       'Prompt a personal follow-up when someone has not replied or a next step is due.',
     ],
-    goodFit: 'Inquiries wait too long for a response, appointments are missed, or your team has to keep a separate mental list of who to contact next.',
-    care: 'Messages should reflect how you actually work, arrive at sensible times, and respect customer preferences. Your team stays able to see the conversation and step in whenever context matters.',
+    goodFit: 'Use this service to give each inquiry a timely reply and keep upcoming appointments on track.',
+    care: 'I write messages to match your process, schedule them at sensible times, and respect customer preferences. Your team can see the conversation and step in when context matters.',
   },
   {
     no: '04',
@@ -84,36 +84,36 @@ const services = [
     title: 'Websites and digital tools',
     text: 'Refresh or build a focused website that explains what you do and makes it easy for the right people to get in touch. I can also create small tools for a specific business need.',
     examples: 'Website refresh · Landing pages · Custom intake tools',
-    headline: <>A clearer digital front<br /><em>door for your business.</em></>,
-    intro: 'Your website and small digital tools should make the next step clear. I build focused experiences that explain your offer, answer the right questions, and help visitors take action.',
-    focusTitle: 'Make the important task easier to do.',
-    focusCopy: 'That might mean a refreshed website with clearer service pages, a landing page for one offer, or a lightweight internal tool that removes a recurring spreadsheet chore. The scope stays centered on the people who will use it.',
+    headline: <>A website that shows<br /><em>visitors what to do next.</em></>,
+    intro: 'I build focused websites and small tools that make your service easier to understand and the next step easier to take.',
+    focusTitle: 'Make everyday tasks easier to finish.',
+    focusCopy: 'The work might be a refresh with clearer service pages, a landing page for one offer, or an internal tool for a recurring spreadsheet task. We keep the scope close to the people who will use it.',
     projects: [
       'Reshape a website so visitors can understand your services and contact you quickly.',
       'Create a focused landing page and intake form for a particular audience or offer.',
       'Build a small digital tool around a repeatable task your current software does not cover.',
     ],
-    goodFit: 'Your current site no longer reflects the business, visitors are unsure what to do next, or a small custom tool could remove a practical bottleneck.',
-    care: 'The result should be easy to update and work well on phones. We agree on content, ownership, and any connections to existing systems before building.',
+    goodFit: 'I can refresh a site with current service details or build a small tool for a task your software does not cover.',
+    care: 'I make the site easy to update and use on phones. Before building, we agree on content, ownership, and connections to existing systems.',
   },
   {
     no: '05',
     slug: 'process-review-and-implementation',
     icon: <Check />,
     title: 'Process review and implementation',
-    text: 'Sometimes the best place to start is a clear map of the work. We identify friction, weigh options, then implement the changes that make sense.',
+    text: 'Get a clear view of the process and a recommendation before committing to a build.',
     examples: 'Process mapping · Tool selection · Team handover',
     headline: <>Understand the work<br /><em>before changing it.</em></>,
-    intro: 'If you know a process feels harder than it should but are not sure what to fix, we can first make the work visible. Then you can choose a practical next step with a clear view of the trade-offs.',
-    focusTitle: 'Find the cause before choosing a tool.',
-    focusCopy: 'We trace a process from its starting point through the people, systems, decisions, and exceptions involved. That gives us a shared picture of where time is lost and which changes are likely to help.',
+    intro: 'I map the work with your team, compare ways to improve it, and recommend a next step. The recommendation includes the trade-offs so you can decide what to implement.',
+    focusTitle: 'See where a process can improve.',
+    focusCopy: 'We follow a task from its start through the people and tools it touches. That shows where time goes and which changes could help.',
     projects: [
       'Map a current process and identify repeated entry, waiting, or unclear ownership.',
       'Compare a process change, an existing tool, and custom automation in plain language.',
-      'Prioritize a useful first improvement and implement it with a clear team handover.',
+      'Pick a first change to implement and prepare a handover for your team.',
     ],
-    goodFit: 'Several tools or people are involved, the process has grown informally, or you want a recommendation before committing to a build.',
-    care: 'A review can end with a recommendation and a plan, even if the right answer is to keep things simple. Any implementation is scoped around an agreed outcome and the people affected by it.',
+    goodFit: 'Choose a process review when several people or tools share the work, or when you want a recommendation before a build.',
+    care: 'A review may show that the current process is best left alone. If we make a change, we agree on the outcome and the people affected.',
   },
 ];
 
@@ -180,10 +180,10 @@ function HomePage({ currentPage, navigate }) {
     <>
       <section className="hero page-width">
         <div className="hero-copy">
-          <Eyebrow>Thoughtful automation for growing businesses</Eyebrow>
+          <Eyebrow>Automation for growing businesses</Eyebrow>
           <h1>Make more room for <em>good work.</em></h1>
           <p className="hero-lede">
-            I help small teams untangle repetitive work and build practical systems that give people time back.
+            I help small teams cut repetitive steps so people can spend more time with customers and on creative work.
           </p>
           <div className="hero-actions">
             <button className="button" onClick={() => navigate('calendar')}>
@@ -199,7 +199,7 @@ function HomePage({ currentPage, navigate }) {
         <figure className="hero-portrait">
           <img src="/my-new-photo.png" alt="Josh Strohm in his home office" />
           <figcaption>
-            <span className="portrait-caption-label">A practical partner for better operations</span>
+            <span className="portrait-caption-label">Workflow and automation consultant</span>
             <span className="portrait-caption-name">Josh Strohm <span>· Founder</span></span>
           </figcaption>
         </figure>
@@ -209,10 +209,10 @@ function HomePage({ currentPage, navigate }) {
         <div className="page-width intro-band-inner">
           <Eyebrow>The work behind the work</Eyebrow>
           <div className="intro-band-content">
-            <h2>Good businesses lose time in the in-between.</h2>
+            <h2>Make the hand-offs easier to manage.</h2>
             <div>
-              <p>Information gets entered twice. Follow-ups slip through the cracks. A process only one person knows becomes a bottleneck.</p>
-              <p>Those are solvable problems. We start with how your team actually works, then make the repetitive parts easier to handle.</p>
+              <p>I connect repeated steps and make follow-ups visible so information reaches the right person with less checking.</p>
+              <p>We look at how your team works, then simplify the steps people repeat each day.</p>
             </div>
           </div>
         </div>
@@ -222,24 +222,24 @@ function HomePage({ currentPage, navigate }) {
         <div className="section-heading-row">
           <div>
             <Eyebrow>Where I can help</Eyebrow>
-            <h2>Useful systems.<br /><em>Less busywork.</em></h2>
+            <h2>Systems that fit.<br /><em>Less busywork.</em></h2>
           </div>
-          <p className="section-aside">The right answer might be automation, a clearer process, or a thoughtful mix of both.</p>
+          <p className="section-aside">I choose a tool or process change that fits the work.</p>
         </div>
         <div className="service-list">
           <SiteLink page="workflow-automation" currentPage={currentPage} navigate={navigate} className="service-row">
             <span className="service-number">01</span><Workflow size={21} aria-hidden="true" />
-            <div><h3>Workflows that connect your tools</h3><p>Move information between the systems you already use, with fewer hand-offs and less rekeying.</p></div>
+            <div><h3>Workflows that connect your tools</h3><p>Move information between the systems you already use with less manual entry.</p></div>
             <ArrowUpRight className="row-arrow" size={19} aria-hidden="true" />
           </SiteLink>
           <SiteLink page="chat-and-voice-assistants" currentPage={currentPage} navigate={navigate} className="service-row">
             <span className="service-number">02</span><MessageSquareText size={21} aria-hidden="true" />
-            <div><h3>Helpful AI, in the right places</h3><p>From answering straightforward customer questions to helping staff find information or prepare a draft, with a person involved where it matters.</p></div>
+            <div><h3>AI assistants for routine questions</h3><p>Answer common customer questions or help staff find information. Your team stays involved when a request needs judgment.</p></div>
             <ArrowUpRight className="row-arrow" size={19} aria-hidden="true" />
           </SiteLink>
           <SiteLink page="lead-and-appointment-follow-up" currentPage={currentPage} navigate={navigate} className="service-row">
             <span className="service-number">03</span><Clock3 size={21} aria-hidden="true" />
-            <div><h3>Follow-up that doesn’t get forgotten</h3><p>Make sure inquiries, appointments, and next steps reach the right person at the right time.</p></div>
+            <div><h3>Clear next steps for each inquiry</h3><p>Send inquiries to the right person and keep the next step visible.</p></div>
             <ArrowUpRight className="row-arrow" size={19} aria-hidden="true" />
           </SiteLink>
         </div>
@@ -249,13 +249,13 @@ function HomePage({ currentPage, navigate }) {
       <section className="approach-band">
         <div className="page-width approach-grid">
           <div>
-            <Eyebrow>A steady, collaborative process</Eyebrow>
+            <Eyebrow>From first conversation to handover</Eyebrow>
             <h2>Understand first.<br /><em>Automate second.</em></h2>
           </div>
           <div className="approach-steps">
-            <div><span>01</span><p><strong>Listen and map</strong>We look at what happens today, where work slows down, and what matters to your team.</p></div>
-            <div><span>02</span><p><strong>Find the simple fix</strong>We agree on a useful first step and choose tools that fit the way you operate.</p></div>
-            <div><span>03</span><p><strong>Build and hand over</strong>I set it up, walk your team through it, and make sure there’s a clear way to get support.</p></div>
+            <div><span>01</span><p><strong>Listen and map</strong>We map the people and tools involved, then agree on what a good result looks like.</p></div>
+            <div><span>02</span><p><strong>Agree on a first step</strong>I explain the options, then we choose a change that fits your work.</p></div>
+            <div><span>03</span><p><strong>Build and hand over</strong>I set it up, walk your team through it, and explain how to get support.</p></div>
             <button className="text-link" onClick={() => navigate('methodology')}>A closer look at how I work <ArrowRight size={16} /></button>
           </div>
         </div>
@@ -280,8 +280,8 @@ function ServicesPage({ navigate }) {
   return (
     <>
       <section className="page-width page-top">
-        <PageIntro eyebrow="Services" title={<>Practical systems.<br /><em>Less repetition.</em></>}>
-          Every project starts with your process and your people. Technology comes in only when it makes the work meaningfully easier.
+        <PageIntro eyebrow="Services" title={<>Systems for your work.<br /><em>Fewer repeated steps.</em></>}>
+          I map your process with the people who use it. Then I recommend tools when they can make the work easier.
         </PageIntro>
         <div className="services-detail-list">
           {services.map((item) => (
@@ -322,13 +322,13 @@ function ServicePage({ service, navigate }) {
         </div>
         <div className="service-page-details">
           <section className="service-page-examples">
-            <Eyebrow>Some useful outcomes</Eyebrow>
+            <Eyebrow>Possible projects</Eyebrow>
             <h2>What this can look like</h2>
             <ul>{service.projects.map((project) => <li key={project}>{project}</li>)}</ul>
           </section>
           <aside className="service-page-care">
             <span className="detail-icon"><Check size={22} aria-hidden="true" /></span>
-            <div><h2>Designed for real work</h2><p>{service.care}</p></div>
+            <div><h2>For day-to-day use</h2><p>{service.care}</p></div>
           </aside>
         </div>
       </section>
@@ -339,17 +339,17 @@ function ServicePage({ service, navigate }) {
 
 function MethodologyPage({ navigate }) {
   const steps = [
-    ['01', 'Understand the day-to-day', 'We talk through the work as it happens now: the people involved, the tools in use, and the places where a task gets repeated or delayed.'],
-    ['02', 'Choose a useful first step', 'I lay out the options in plain language. Together, we decide what is worth changing and what a good result should look like.'],
-    ['03', 'Build around your team', 'The solution should feel natural to use. I set it up, test it with real examples, and leave room for your team to give feedback.'],
-    ['04', 'Make the handover clear', 'You get a walkthrough and practical notes for the new process. If something needs adjusting later, you know where to start.'],
+    ['01', 'Understand the day-to-day', 'We map the process with the people who use it. This shows where a task repeats or waits before we make a change.'],
+    ['02', 'Choose what to change', 'I explain the options in plain language. We decide what to change and what we want the change to do.'],
+    ['03', 'Build around your team', 'I set up the agreed change using examples from your work. Your team can try it and tell me what needs adjusting.'],
+    ['04', 'Make the handover clear', 'I walk you through the new process and leave notes your team can refer to. If it needs an adjustment later, you will know where to start.'],
   ];
 
   return (
     <>
       <section className="page-width page-top">
-        <PageIntro eyebrow="How I work" title={<>Clear steps.<br /><em>No black box.</em></>}>
-          Good automation starts with understanding the people doing the work. The process stays collaborative from first conversation through handover.
+        <PageIntro eyebrow="How I work" title={<>Clear steps.<br /><em>You stay involved.</em></>}>
+          I work with your team from the first process map through handover. You’ll know why we made the change and how to use it.
         </PageIntro>
         <div className="method-list">
           {steps.map(([no, title, text]) => <article key={no}><span>{no}</span><div><h2>{title}</h2><p>{text}</p></div></article>)}
@@ -357,9 +357,9 @@ function MethodologyPage({ navigate }) {
         <div className="principles">
           <Eyebrow>What guides the work</Eyebrow>
           <div className="principle-grid">
-            <article><h3>Useful beats impressive</h3><p>A smaller, dependable improvement is better than a complicated system nobody wants to maintain.</p></article>
-            <article><h3>People stay in control</h3><p>Automation should support good judgment. Important decisions remain visible and reviewable.</p></article>
-            <article><h3>Built to be understood</h3><p>Your team should know what the system does, how to use it, and what to do when something changes.</p></article>
+            <article><h3>Keep the system maintainable</h3><p>I favor workflows your team can update without calling me for every small change.</p></article>
+            <article><h3>People review important decisions</h3><p>For decisions with real consequences, your team can review what happened before acting.</p></article>
+            <article><h3>Leave clear instructions</h3><p>Your team gets an explanation of what the system does and what to do when something changes.</p></article>
           </div>
         </div>
       </section>
@@ -377,13 +377,13 @@ function AboutPage({ navigate }) {
           <p>Josh Strohm <span>Founder &amp; automation consultant</span></p>
         </div>
         <div className="about-copy">
-          <PageIntro eyebrow="About Josh" title={<>A real person<br />to work through it with.</>}>
-            My name is Josh Strohm. I started Automate with Josh to help businesses spend less time wrestling with inefficient processes.
+          <PageIntro eyebrow="About Josh" title={<>Meet Josh<br />Strohm.</>}>
+            I started Automate with Josh to help businesses cut repetitive admin and make more time for customer work.
           </PageIntro>
-          <p>Over the years, I’ve seen good teams buried in admin work while important customer and creative work waits. Often the problem isn’t a lack of effort. It’s a process that has grown harder to manage than it needs to be.</p>
-          <p>I bring a practical, curious approach: understand what’s happening, make the options clear, then build a system that fits the people who will use it.</p>
-          <p>I don’t believe every problem needs AI. The right solution might be a simple workflow, a better connection between existing tools, or a new process the team can actually maintain.</p>
-          <button className="text-link" onClick={() => navigate('calendar')}>Get to know each other <ArrowRight size={16} /></button>
+          <p>As a business grows, a process can become harder to manage. I work with the people doing it to find a change that fits their day-to-day work.</p>
+          <p>Some projects connect the apps a team already uses. Others set up routine follow-up or help staff find information with an AI assistant.</p>
+          <p>AI is one option. I recommend it when it can handle a specific part of the work; otherwise, a workflow or process change may fit better.</p>
+          <button className="text-link" onClick={() => navigate('calendar')}>Talk with Josh <ArrowRight size={16} /></button>
         </div>
       </section>
       <Callout navigate={navigate} />
@@ -395,7 +395,7 @@ function CalendarPage() {
   return (
     <section className="page-width page-top booking-page">
       <PageIntro eyebrow="Start with a conversation" title={<>Let’s talk about<br /><em>how work gets done.</em></>}>
-        Pick a time for a short introduction. We’ll talk about what’s taking up time and whether I can help.
+        Pick a time for a short introduction. We’ll discuss the process you’d like to improve and whether I can help.
       </PageIntro>
       <div className="calendar-frame">
         <iframe
@@ -438,8 +438,8 @@ function ContactPage() {
   return (
     <section className="page-width page-top contact-layout">
       <div className="contact-intro">
-        <PageIntro eyebrow="Contact" title={<>Tell me what’s<br /><em>getting in the way.</em></>}>
-          A few details will help me understand your situation before we speak. Or book a time directly if that’s easier.
+        <PageIntro eyebrow="Contact" title={<>Tell me what<br /><em>you’d like to improve.</em></>}>
+          A few details will help me understand your project. You can also book a time directly.
         </PageIntro>
         <div className="contact-note"><span className="note-icon"><Clock3 size={19} /></span><p><strong>Prefer to talk?</strong><br />Book a 15-minute assessment and we’ll start there.</p></div>
         <a className="text-link" href="mailto:hi@automatewithjosh.com">hi@automatewithjosh.com <ArrowUpRight size={16} /></a>
@@ -472,7 +472,7 @@ function Callout({ navigate }) {
   return (
     <section className="callout-band">
       <div className="page-width callout-inner">
-        <div><Eyebrow>A good place to begin</Eyebrow><h2>Bring me the messy part.</h2><p>We’ll figure out what’s worth fixing together.</p></div>
+        <div><Eyebrow>Have a process in mind?</Eyebrow><h2>Talk through your workflow.</h2><p>We can find a change that fits how your team works.</p></div>
         <button className="button button-light" onClick={() => navigate('calendar')}>Book a conversation <ArrowUpRight size={17} /></button>
       </div>
     </section>
@@ -483,10 +483,10 @@ function SiteFooter({ currentPage, navigate }) {
   return (
     <footer className="site-footer">
       <div className="page-width footer-main">
-        <div><SiteLink page="home" currentPage={currentPage} navigate={navigate} className="footer-wordmark">automate <span>with josh</span></SiteLink><p>Practical automation for the way your business works.</p></div>
+        <div><SiteLink page="home" currentPage={currentPage} navigate={navigate} className="footer-wordmark">automate <span>with josh</span></SiteLink><p>Automation, process reviews, and small digital tools for businesses.</p></div>
         <div className="footer-links"><SiteLink page="services" currentPage={currentPage} navigate={navigate}>Services</SiteLink><SiteLink page="methodology" currentPage={currentPage} navigate={navigate}>How I work</SiteLink><SiteLink page="about" currentPage={currentPage} navigate={navigate}>About</SiteLink><SiteLink page="contact" currentPage={currentPage} navigate={navigate}>Contact</SiteLink><a href="https://www.linkedin.com/in/joshua-w-strohm/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={13} /></a><a href="https://x.com/joshwstrohm" target="_blank" rel="noopener noreferrer">X <ArrowUpRight size={13} /></a><a href="mailto:hi@automatewithjosh.com">Email <ArrowUpRight size={13} /></a></div>
       </div>
-      <div className="page-width footer-bottom"><span>© {new Date().getFullYear()} Automate with Josh</span><span>Built around people, process, and useful technology.</span></div>
+      <div className="page-width footer-bottom"><span>© {new Date().getFullYear()} Automate with Josh</span><span>Josh works with your team from planning through handover.</span></div>
     </footer>
   );
 }
@@ -513,7 +513,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const labels = { home: 'Practical Business Automation', services: 'Services', methodology: 'How I Work', about: 'About Josh', calendar: 'Book a Conversation', contact: 'Contact' };
+    const labels = { home: 'Business Automation and Process Consulting', services: 'Services', methodology: 'How I Work', about: 'About Josh', calendar: 'Book a Conversation', contact: 'Contact' };
     document.title = `${serviceBySlug[currentPage]?.title || labels[currentPage] || labels.home} | Automate with Josh`;
   }, [currentPage]);
 
