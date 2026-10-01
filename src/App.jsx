@@ -412,7 +412,7 @@ function AboutPage({ navigate }) {
           <p>Josh Strohm <span>Founder &amp; automation consultant</span></p>
         </div>
         <div className="about-copy">
-          <PageIntro eyebrow="About Josh" title={<>Meet Josh<br />Strohm.</>}>
+          <PageIntro eyebrow="About Josh" title={<>I start by<br />listening.</>}>
             I started Automate with Josh to help small businesses spend less time on repetitive admin and keep customer work moving.
           </PageIntro>
           <p>As a business grows, a process that once worked can become harder to keep track of. I talk with the people doing the work to understand what gets repeated, delayed, or missed.</p>
