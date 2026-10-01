@@ -435,7 +435,7 @@ const ContactPage = () => (
               <div className="flex items-start gap-4">
                  <div className="bg-[#333] p-3 rounded-lg text-[#00FFFF]"><Clock /></div>
                  <div>
-                   <h4 className="text-white font-bold text-lg">15-Minute Audit</h4>
+                   <h4 className="text-white font-bold text-lg">15-Minute Assessment</h4>
                    <p className="text-gray-400 text-sm">We'll identify one major bottleneck in just 15 minutes.</p>
                  </div>
               </div>
