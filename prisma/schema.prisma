@@ -1,0 +1,103 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum EntitlementSource {
+  FREE @map("free")
+  PAID @map("paid")
+}
+
+model Skill {
+  id            String         @id @default(cuid())
+  slug          String         @unique
+  title         String
+  description   String         @db.Text
+  priceCents    Int            @default(0)
+  currency      String         @default("usd") @db.VarChar(3)
+  agentKeys     String[]       @default([])
+  averageRating Float          @default(0)
+  ratingCount   Int            @default(0)
+  salesCount    Int            @default(0)
+  downloadCount Int            @default(0)
+  isPublished   Boolean        @default(false)
+  packages      SkillPackage[]
+  orders        Order[]
+  entitlements  Entitlement[]
+  leads         Lead[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([isPublished])
+}
+
+model SkillPackage {
+  id          String   @id @default(cuid())
+  skillId     String
+  agentKey    String
+  storageKey  String
+  fileName    String
+  contentType String?
+  sizeBytes   Int?
+  skill       Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([skillId, agentKey])
+}
+
+model Order {
+  id                      String       @id @default(cuid())
+  skillId                 String
+  email                   String
+  amountCents             Int
+  currency                String       @db.VarChar(3)
+  stripeCheckoutSessionId String       @unique
+  stripePaymentIntentId   String?      @unique
+  status                  OrderStatus  @default(PENDING)
+  paidAt                  DateTime?
+  skill                   Skill        @relation(fields: [skillId], references: [id], onDelete: Restrict)
+  entitlement             Entitlement?
+  createdAt               DateTime     @default(now())
+  updatedAt               DateTime     @updatedAt
+
+  @@index([email, status])
+  @@index([skillId, status])
+}
+
+model Entitlement {
+  id        String            @id @default(cuid())
+  email     String
+  skillId   String
+  source    EntitlementSource
+  orderId   String?           @unique
+  skill     Skill             @relation(fields: [skillId], references: [id], onDelete: Restrict)
+  order     Order?            @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  createdAt DateTime          @default(now())
+
+  @@unique([email, skillId])
+  @@index([skillId, source])
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  email     String
+  skillId   String
+  skill     Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([email, skillId])
+}
