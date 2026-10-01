@@ -19,7 +19,106 @@ const pages = [
   { label: 'Contact', route: 'contact' },
 ];
 
-const pagePath = (page) => page === 'home' ? '/' : `/${page}`;
+const services = [
+  {
+    no: '01',
+    slug: 'workflow-automation',
+    icon: <Workflow />,
+    title: 'Workflow automation',
+    text: 'Connect the apps your team depends on. Reduce repetitive data entry, keep hand-offs moving, and make routine processes more consistent.',
+    examples: 'n8n · Make · Zapier · APIs',
+    headline: <>Connect the steps that<br /><em>slow good work down.</em></>,
+    intro: 'When the same information has to be copied, checked, and sent by hand, small delays add up. I connect the tools you already use so routine work moves forward with fewer hand-offs.',
+    focusTitle: 'Let routine work move on its own.',
+    focusCopy: 'A workflow can take a new inquiry from your inbox into a tracker, create the right follow-up task, and let the owner know it is ready. Your team can spend less time moving information and more time acting on it.',
+    projects: [
+      'Copy new customer or order details between systems without retyping them.',
+      'Create tasks and notify the right teammate when a request reaches the next step.',
+      'Collect updates from a form, spreadsheet, or inbox into one dependable view.',
+    ],
+    goodFit: 'A repeatable process crosses several apps, and people are spending time copying details or checking whether a hand-off happened.',
+    care: 'The workflow should make its status visible and flag errors for a person to review. I map the exceptions as well as the happy path, so a missing field or disconnected account does not fail silently.',
+  },
+  {
+    no: '02',
+    slug: 'chat-and-voice-assistants',
+    icon: <MessageSquareText />,
+    title: 'Chat and voice assistants',
+    text: 'Handle straightforward questions, capture key details, and route the unusual requests to your team. For internal use, AI can also help staff find information or prepare a first draft.',
+    examples: 'Website chat · AI phone assistant · Internal search',
+    headline: <>Quick answers for the<br /><em>questions you know.</em></>,
+    intro: 'A useful assistant can answer common questions, gather the details your team needs, and make a clear hand-off when a conversation needs a person.',
+    focusTitle: 'Give people a helpful first response.',
+    focusCopy: 'A website or phone assistant can use your approved information to respond to routine questions, collect context, and pass the conversation to your team with a useful summary. Internal assistants can help staff find the right document or prepare a first draft.',
+    projects: [
+      'Answer common questions using your current service details, policies, or knowledge base.',
+      'Collect contact details and the reason for a call or message before routing it.',
+      'Help staff search internal guidance and prepare drafts for their review.',
+    ],
+    goodFit: 'Your team answers the same straightforward questions often, or people need a faster way to find information that already exists.',
+    care: 'The assistant needs clear source material and a safe way to say it does not know. Sensitive requests and decisions stay with a person, with an obvious route to reach your team.',
+  },
+  {
+    no: '03',
+    slug: 'lead-and-appointment-follow-up',
+    icon: <Clock3 />,
+    title: 'Lead and appointment follow-up',
+    text: 'Help every inquiry receive a timely response and make it easier for customers to book, reschedule, and know what happens next.',
+    examples: 'Intake · Reminders · Scheduling',
+    headline: <>A thoughtful next step,<br /><em>right on time.</em></>,
+    intro: 'New inquiries and upcoming appointments are easy to miss when follow-up depends on someone remembering. A clear sequence helps customers know what happens next and helps your team stay on top of each request.',
+    focusTitle: 'Keep every inquiry moving.',
+    focusCopy: 'From a first confirmation to a reminder before an appointment, follow-up can happen at the right point in your existing process. Your team can see who has responded, what is booked, and which conversations need attention.',
+    projects: [
+      'Send an immediate confirmation and alert the right person when an inquiry arrives.',
+      'Offer a booking link, then send useful reminders and rescheduling details.',
+      'Prompt a personal follow-up when someone has not replied or a next step is due.',
+    ],
+    goodFit: 'Inquiries wait too long for a response, appointments are missed, or your team has to keep a separate mental list of who to contact next.',
+    care: 'Messages should reflect how you actually work, arrive at sensible times, and respect customer preferences. Your team stays able to see the conversation and step in whenever context matters.',
+  },
+  {
+    no: '04',
+    slug: 'websites-and-digital-tools',
+    icon: <ArrowUpRight />,
+    title: 'Websites and digital tools',
+    text: 'Refresh or build a focused website that explains what you do and makes it easy for the right people to get in touch. I can also create small tools for a specific business need.',
+    examples: 'Website refresh · Landing pages · Custom intake tools',
+    headline: <>A clearer digital front<br /><em>door for your business.</em></>,
+    intro: 'Your website and small digital tools should make the next step clear. I build focused experiences that explain your offer, answer the right questions, and help visitors take action.',
+    focusTitle: 'Make the important task easier to do.',
+    focusCopy: 'That might mean a refreshed website with clearer service pages, a landing page for one offer, or a lightweight internal tool that removes a recurring spreadsheet chore. The scope stays centered on the people who will use it.',
+    projects: [
+      'Reshape a website so visitors can understand your services and contact you quickly.',
+      'Create a focused landing page and intake form for a particular audience or offer.',
+      'Build a small digital tool around a repeatable task your current software does not cover.',
+    ],
+    goodFit: 'Your current site no longer reflects the business, visitors are unsure what to do next, or a small custom tool could remove a practical bottleneck.',
+    care: 'The result should be easy to update and work well on phones. We agree on content, ownership, and any connections to existing systems before building.',
+  },
+  {
+    no: '05',
+    slug: 'process-review-and-implementation',
+    icon: <Check />,
+    title: 'Process review and implementation',
+    text: 'Sometimes the best place to start is a clear map of the work. We identify friction, weigh options, then implement the changes that make sense.',
+    examples: 'Process mapping · Tool selection · Team handover',
+    headline: <>Understand the work<br /><em>before changing it.</em></>,
+    intro: 'If you know a process feels harder than it should but are not sure what to fix, we can first make the work visible. Then you can choose a practical next step with a clear view of the trade-offs.',
+    focusTitle: 'Find the cause before choosing a tool.',
+    focusCopy: 'We trace a process from its starting point through the people, systems, decisions, and exceptions involved. That gives us a shared picture of where time is lost and which changes are likely to help.',
+    projects: [
+      'Map a current process and identify repeated entry, waiting, or unclear ownership.',
+      'Compare a process change, an existing tool, and custom automation in plain language.',
+      'Prioritize a useful first improvement and implement it with a clear team handover.',
+    ],
+    goodFit: 'Several tools or people are involved, the process has grown informally, or you want a recommendation before committing to a build.',
+    care: 'A review can end with a recommendation and a plan, even if the right answer is to keep things simple. Any implementation is scoped around an agreed outcome and the people affected by it.',
+  },
+];
+
+const serviceBySlug = Object.fromEntries(services.map((service) => [service.slug, service]));
+const pagePath = (page) => page === 'home' ? '/' : serviceBySlug[page] ? `/services/${page}` : `/${page}`;
 
 function SiteLink({ page, currentPage, navigate, children, className = '' }) {
   return (
@@ -28,6 +127,7 @@ function SiteLink({ page, currentPage, navigate, children, className = '' }) {
       className={className}
       aria-current={currentPage === page ? 'page' : undefined}
       onClick={(event) => {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
         navigate(page);
       }}
@@ -37,11 +137,7 @@ function SiteLink({ page, currentPage, navigate, children, className = '' }) {
   );
 }
 
-function SiteHeader({ currentPage, navigate }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => setMenuOpen(false), [currentPage]);
-
+function SiteHeader({ currentPage, navigate, menuOpen, setMenuOpen }) {
   return (
     <header className="site-header">
       <div className="header-inner page-width">
@@ -79,7 +175,7 @@ function Eyebrow({ children }) {
   return <p className="eyebrow"><span aria-hidden="true" />{children}</p>;
 }
 
-function HomePage({ navigate }) {
+function HomePage({ currentPage, navigate }) {
   return (
     <>
       <section className="hero page-width">
@@ -131,21 +227,21 @@ function HomePage({ navigate }) {
           <p className="section-aside">The right answer might be automation, a clearer process, or a thoughtful mix of both.</p>
         </div>
         <div className="service-list">
-          <article className="service-row">
+          <SiteLink page="workflow-automation" currentPage={currentPage} navigate={navigate} className="service-row">
             <span className="service-number">01</span><Workflow size={21} aria-hidden="true" />
             <div><h3>Workflows that connect your tools</h3><p>Move information between the systems you already use, with fewer hand-offs and less rekeying.</p></div>
             <ArrowUpRight className="row-arrow" size={19} aria-hidden="true" />
-          </article>
-          <article className="service-row">
+          </SiteLink>
+          <SiteLink page="chat-and-voice-assistants" currentPage={currentPage} navigate={navigate} className="service-row">
             <span className="service-number">02</span><MessageSquareText size={21} aria-hidden="true" />
             <div><h3>Helpful AI, in the right places</h3><p>From answering straightforward customer questions to helping staff find information or prepare a draft, with a person involved where it matters.</p></div>
             <ArrowUpRight className="row-arrow" size={19} aria-hidden="true" />
-          </article>
-          <article className="service-row">
+          </SiteLink>
+          <SiteLink page="lead-and-appointment-follow-up" currentPage={currentPage} navigate={navigate} className="service-row">
             <span className="service-number">03</span><Clock3 size={21} aria-hidden="true" />
             <div><h3>Follow-up that doesn’t get forgotten</h3><p>Make sure inquiries, appointments, and next steps reach the right person at the right time.</p></div>
             <ArrowUpRight className="row-arrow" size={19} aria-hidden="true" />
-          </article>
+          </SiteLink>
         </div>
         <button className="text-link services-link" onClick={() => navigate('services')}>See all services <ArrowRight size={16} /></button>
       </section>
@@ -181,14 +277,6 @@ function PageIntro({ eyebrow, title, children }) {
 }
 
 function ServicesPage({ navigate }) {
-  const services = [
-    { no: '01', icon: <Workflow />, title: 'Workflow automation', text: 'Connect the apps your team depends on. Reduce repetitive data entry, keep hand-offs moving, and make routine processes more consistent.', examples: 'n8n · Make · Zapier · APIs' },
-    { no: '02', icon: <MessageSquareText />, title: 'Chat and voice assistants', text: 'Handle straightforward questions, capture key details, and route the unusual requests to your team. For internal use, AI can also help staff find information or prepare a first draft.', examples: 'Website chat · AI phone assistant · Internal search' },
-    { no: '03', icon: <Clock3 />, title: 'Lead and appointment follow-up', text: 'Help every inquiry receive a timely response and make it easier for customers to book, reschedule, and know what happens next.', examples: 'Intake · Reminders · Scheduling' },
-    { no: '04', icon: <ArrowUpRight />, title: 'Websites and digital tools', text: 'Refresh or build a focused website that explains what you do and makes it easy for the right people to get in touch. I can also create small tools for a specific business need.', examples: 'Website refresh · Landing pages · Custom intake tools' },
-    { no: '05', icon: <Check />, title: 'Process review and implementation', text: 'Sometimes the best place to start is a clear map of the work. We identify friction, weigh options, then implement the changes that make sense.', examples: 'Process mapping · Tool selection · Team handover' },
-  ];
-
   return (
     <>
       <section className="page-width page-top">
@@ -197,12 +285,51 @@ function ServicesPage({ navigate }) {
         </PageIntro>
         <div className="services-detail-list">
           {services.map((item) => (
-            <article className="service-detail" key={item.no}>
+            <SiteLink page={item.slug} currentPage="services" navigate={navigate} className="service-detail" key={item.no}>
               <span className="service-number">{item.no}</span>
-              <div className="detail-icon">{item.icon}</div>
-              <div className="detail-copy"><h2>{item.title}</h2><p>{item.text}</p><span className="detail-examples">{item.examples}</span></div>
-            </article>
+              <div className="detail-icon" aria-hidden="true">{item.icon}</div>
+              <div className="detail-copy"><h2>{item.title}</h2><p>{item.text}</p><span className="detail-examples">{item.examples}</span><span className="service-card-cta">Explore this service <ArrowRight size={15} aria-hidden="true" /></span></div>
+            </SiteLink>
           ))}
+        </div>
+      </section>
+      <Callout navigate={navigate} />
+    </>
+  );
+}
+
+function ServicePage({ service, navigate }) {
+  return (
+    <>
+      <section className="page-width page-top service-page">
+        <SiteLink page="services" currentPage={service.slug} navigate={navigate} className="text-link service-back-link">
+          <ArrowRight size={15} className="back-arrow" aria-hidden="true" /> All services
+        </SiteLink>
+        <PageIntro eyebrow={`Service ${service.no} · ${service.title}`} title={service.headline}>
+          {service.intro}
+        </PageIntro>
+        <div className="service-page-overview">
+          <div className="service-page-focus">
+            <Eyebrow>Where this helps</Eyebrow>
+            <h2>{service.focusTitle}</h2>
+            <p>{service.focusCopy}</p>
+          </div>
+          <aside className="service-fit">
+            <span className="service-fit-label">A good fit when</span>
+            <p>{service.goodFit}</p>
+            <span className="detail-examples">{service.examples}</span>
+          </aside>
+        </div>
+        <div className="service-page-details">
+          <section className="service-page-examples">
+            <Eyebrow>Some useful outcomes</Eyebrow>
+            <h2>What this can look like</h2>
+            <ul>{service.projects.map((project) => <li key={project}>{project}</li>)}</ul>
+          </section>
+          <aside className="service-page-care">
+            <span className="detail-icon"><Check size={22} aria-hidden="true" /></span>
+            <div><h2>Designed for real work</h2><p>{service.care}</p></div>
+          </aside>
         </div>
       </section>
       <Callout navigate={navigate} />
@@ -366,28 +493,38 @@ function SiteFooter({ currentPage, navigate }) {
 
 function getPageFromPath() {
   const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  const [section, serviceSlug] = path.split('/');
+  if (section === 'services' && serviceBySlug[serviceSlug]) return serviceSlug;
   const validPages = ['methodology', 'services', 'about', 'calendar', 'contact'];
   return validPages.includes(path) ? path : 'home';
 }
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(getPageFromPath);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handlePopState = () => setCurrentPage(getPageFromPath());
+    const handlePopState = () => {
+      setCurrentPage(getPageFromPath());
+      setMenuOpen(false);
+    };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   useEffect(() => {
     const labels = { home: 'Practical Business Automation', services: 'Services', methodology: 'How I Work', about: 'About Josh', calendar: 'Book a Conversation', contact: 'Contact' };
-    document.title = `${labels[currentPage]} | Automate with Josh`;
+    document.title = `${serviceBySlug[currentPage]?.title || labels[currentPage] || labels.home} | Automate with Josh`;
   }, [currentPage]);
 
   const navigate = (page) => {
-    if (page === currentPage) return;
+    if (page === currentPage) {
+      setMenuOpen(false);
+      return;
+    }
     window.history.pushState(null, '', pagePath(page));
     setCurrentPage(page);
+    setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -398,14 +535,14 @@ export default function App() {
     case 'about': content = <AboutPage navigate={navigate} />; break;
     case 'calendar': content = <CalendarPage />; break;
     case 'contact': content = <ContactPage />; break;
-    default: content = <HomePage navigate={navigate} />;
+    default: content = serviceBySlug[currentPage] ? <ServicePage service={serviceBySlug[currentPage]} navigate={navigate} /> : <HomePage currentPage={currentPage} navigate={navigate} />;
   }
 
   return (
     <div className="site-shell">
-      <SiteHeader currentPage={currentPage} navigate={navigate} />
+      <SiteHeader currentPage={serviceBySlug[currentPage] ? 'services' : currentPage} navigate={navigate} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main>{content}</main>
-      <SiteFooter currentPage={currentPage} navigate={navigate} />
+      <SiteFooter currentPage={serviceBySlug[currentPage] ? 'services' : currentPage} navigate={navigate} />
     </div>
   );
 }
