@@ -197,7 +197,14 @@ function HomePage({ currentPage, navigate }) {
         </div>
 
         <figure className="hero-portrait">
-          <img src="/my-new-photo.png" alt="Josh Strohm in his home office" />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/my-new-photo-480.webp 480w, /my-new-photo-768.webp 768w, /my-new-photo-1024.webp 1024w"
+              sizes="(max-width: 580px) calc(100vw - 51px), (max-width: 800px) 35vw, 440px"
+            />
+            <img src="/my-new-photo.png" alt="Josh Strohm in his home office" />
+          </picture>
           <figcaption>
             <span className="portrait-caption-label">Workflow and automation consultant</span>
             <span className="portrait-caption-name">Josh Strohm <span>· Founder</span></span>
@@ -373,7 +380,14 @@ function AboutPage({ navigate }) {
     <>
       <section className="page-width page-top about-layout">
         <div className="about-photo-wrap">
-          <img src="/my-new-photo.png" alt="Josh Strohm, founder of Automate with Josh" />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/my-new-photo-480.webp 480w, /my-new-photo-768.webp 768w, /my-new-photo-1024.webp 1024w"
+              sizes="(max-width: 580px) min(430px, calc(100vw - 52px)), (max-width: 800px) 35vw, 40vw"
+            />
+            <img src="/my-new-photo.png" alt="Josh Strohm, founder of Automate with Josh" loading="lazy" />
+          </picture>
           <p>Josh Strohm <span>Founder &amp; automation consultant</span></p>
         </div>
         <div className="about-copy">
