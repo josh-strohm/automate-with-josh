@@ -314,7 +314,7 @@ function ContactPage() {
         <PageIntro eyebrow="Contact" title={<>Tell me what’s<br /><em>getting in the way.</em></>}>
           A few details will help me understand your situation before we speak. Or book a time directly if that’s easier.
         </PageIntro>
-        <div className="contact-note"><span className="note-icon"><Clock3 size={19} /></span><p><strong>Prefer to talk?</strong><br />Book a short introduction call and we’ll start there.</p></div>
+        <div className="contact-note"><span className="note-icon"><Clock3 size={19} /></span><p><strong>Prefer to talk?</strong><br />Book a 15-minute assessment and we’ll start there.</p></div>
         <a className="text-link" href="mailto:hi@automatewithjosh.com">hi@automatewithjosh.com <ArrowUpRight size={16} /></a>
       </div>
       <div className="form-panel">
