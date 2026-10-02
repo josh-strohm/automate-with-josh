@@ -443,7 +443,44 @@ function CalendarPage() {
   );
 }
 
+const FREE_CRM_CONTACT_FORM = {
+  formId: '10acab5e-89a9-41c6-80f8-e0474fbe9ac5',
+  accessCode: 'Mnpom0RIpNiN1z0w',
+  scriptUrl: 'https://api.freecrm.com/embed/v1/form.js',
+  fields: {
+    businessName: '86a75143-ab63-4a83-875c-d9659965178c',
+    fullName: '0feb6edb-4893-487b-8385-78bfff5ccf0b',
+    email: '22cb1c69-be57-486d-b188-1484d4bce75b',
+    phone: 'c13f6ad2-edc2-4a33-8691-5d4e8f5601bc',
+    businessWebsite: 'cf0648e0-7530-4818-9794-ef05115b5cc3',
+    message: '728d5b8d-3756-47fb-998c-b59a1a295049',
+  },
+};
+
+function loadFreeCrmForms() {
+  if (window.CRMForms) return Promise.resolve(window.CRMForms);
+  const existing = document.querySelector(`script[src="${FREE_CRM_CONTACT_FORM.scriptUrl}"]`);
+  if (existing) {
+    return new Promise((resolve, reject) => {
+      if (window.CRMForms) resolve(window.CRMForms);
+      else {
+        existing.addEventListener('load', () => resolve(window.CRMForms));
+        existing.addEventListener('error', () => reject(new Error('Could not load the contact form.')));
+      }
+    });
+  }
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = FREE_CRM_CONTACT_FORM.scriptUrl;
+    script.async = true;
+    script.addEventListener('load', () => resolve(window.CRMForms));
+    script.addEventListener('error', () => reject(new Error('Could not load the contact form.')));
+    document.body.appendChild(script);
+  });
+}
+
 function ContactPage() {
+  const formRef = useRef(null);
   const [formData, setFormData] = useState({ businessName: '', businessWebsite: '', fullName: '', email: '', phone: '', message: '', consent: false });
   const [status, setStatus] = useState('IDLE');
 
@@ -452,22 +489,42 @@ function ContactPage() {
     setFormData((previous) => ({ ...previous, [name]: type === 'checkbox' ? checked : value }));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setStatus('SUBMITTING');
-    try {
-      const response = await fetch('https://n8n.strohmpartners.com/webhook/da8ce62d-100d-44a4-814c-46ae402df0f0', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+  useEffect(() => {
+    if (status !== 'IDLE') return undefined;
+    const formEl = formRef.current;
+    if (!formEl) return undefined;
+
+    let attachHandle;
+    let cancelled = false;
+
+    const onSubmitStart = () => setStatus('SUBMITTING');
+    formEl.addEventListener('submit', onSubmitStart);
+
+    loadFreeCrmForms()
+      .then((CRMForms) => {
+        if (cancelled || !formRef.current) return;
+        attachHandle = CRMForms.attach(formRef.current, {
+          formId: FREE_CRM_CONTACT_FORM.formId,
+          accessCode: FREE_CRM_CONTACT_FORM.accessCode,
+          showSuccess: false,
+          onSuccess: () => {
+            setFormData({ businessName: '', businessWebsite: '', fullName: '', email: '', phone: '', message: '', consent: false });
+            setStatus('SUCCESS');
+          },
+          onError: () => setStatus('ERROR'),
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        setStatus('ERROR');
       });
-      if (!response.ok) throw new Error('The request could not be sent.');
-      setStatus('SUCCESS');
-      setFormData({ businessName: '', businessWebsite: '', fullName: '', email: '', phone: '', message: '', consent: false });
-    } catch {
-      setStatus('ERROR');
-    }
-  };
+
+    return () => {
+      cancelled = true;
+      formEl.removeEventListener('submit', onSubmitStart);
+      attachHandle?.destroy();
+    };
+  }, [status]);
 
   return (
     <section className="page-width page-top contact-layout">
@@ -482,17 +539,18 @@ function ContactPage() {
         {status === 'SUCCESS' ? (
           <div className="form-success" role="status"><span className="success-icon"><Check size={24} /></span><h2>Thanks for reaching out.</h2><p>Your note is on its way. I’ll be in touch soon.</p><button className="text-link" onClick={() => setStatus('IDLE')}>Send another message <ArrowRight size={16} /></button></div>
         ) : (
-          <form onSubmit={handleSubmit}>
+          <form ref={formRef}>
             <div className="form-heading"><h2>Tell me about the work</h2><p>Fields marked * are required.</p></div>
             <div className="form-grid">
-              <label>Business name *<input required name="businessName" value={formData.businessName} onChange={handleChange} autoComplete="organization" /></label>
-              <label>Your name *<input required name="fullName" value={formData.fullName} onChange={handleChange} autoComplete="name" /></label>
-              <label>Email address *<input required type="email" name="email" value={formData.email} onChange={handleChange} autoComplete="email" /></label>
-              <label>Phone number *<input required type="tel" name="phone" value={formData.phone} onChange={handleChange} autoComplete="tel" /></label>
-              <label className="form-span">Website <span className="optional-label">Optional</span><input type="url" name="businessWebsite" value={formData.businessWebsite} onChange={handleChange} placeholder="https://" /></label>
-              <label className="form-span">What would you like to make easier? *<textarea required name="message" value={formData.message} onChange={handleChange} rows="4" /></label>
+              <label>Business name *<input required name="businessName" value={formData.businessName} onChange={handleChange} autoComplete="organization" data-crmid={FREE_CRM_CONTACT_FORM.fields.businessName} /></label>
+              <label>Your name *<input required name="fullName" value={formData.fullName} onChange={handleChange} autoComplete="name" data-crmid={FREE_CRM_CONTACT_FORM.fields.fullName} /></label>
+              <label>Email address *<input required type="email" name="email" value={formData.email} onChange={handleChange} autoComplete="email" data-crmid={FREE_CRM_CONTACT_FORM.fields.email} /></label>
+              <label>Phone number *<input required type="tel" name="phone" value={formData.phone} onChange={handleChange} autoComplete="tel" data-crmid={FREE_CRM_CONTACT_FORM.fields.phone} /></label>
+              <label className="form-span">Website <span className="optional-label">Optional</span><input type="url" name="businessWebsite" value={formData.businessWebsite} onChange={handleChange} placeholder="https://" data-crmid={FREE_CRM_CONTACT_FORM.fields.businessWebsite} /></label>
+              <label className="form-span">What would you like to make easier? *<textarea required name="message" value={formData.message} onChange={handleChange} rows="4" data-crmid={FREE_CRM_CONTACT_FORM.fields.message} /></label>
             </div>
             <label className="consent-label"><input type="checkbox" name="consent" checked={formData.consent} onChange={handleChange} /><span>I’m happy to receive a follow-up about this inquiry.</span></label>
+            <div data-crm-captcha />
             <span className="visually-hidden" role="status" aria-live="polite">{status === 'SUBMITTING' ? 'Sending your message.' : ''}</span>
             <button className="button form-submit" type="submit" disabled={status === 'SUBMITTING'} aria-busy={status === 'SUBMITTING'}>{status === 'SUBMITTING' ? 'Sending…' : 'Send your note'} <ArrowRight size={17} aria-hidden="true" /></button>
             {status === 'ERROR' && <p className="form-error" role="alert">Something went wrong while sending your note. Please try again or email me directly.</p>}
