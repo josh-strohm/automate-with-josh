@@ -195,6 +195,7 @@ h1, h2, h3, p, figure { margin-top: 0; }
 .form-span { grid-column: 1 / -1; }
 .optional-label { align-self: end; margin-top: -22px; color: #626b64; font-size: 10px; font-weight: 400; }
 .consent-label { display: flex; align-items: start; gap: 9px; margin: 17px 0 20px; color: var(--muted); font-size: 10px; line-height: 1.6; }
+[data-crm-captcha] { margin-bottom: 16px; min-height: 78px; }
 .consent-label input { width: 14px; height: 14px; flex: none; margin: 1px 0 0; accent-color: var(--green); }
 .form-submit { width: 100%; }
 .form-submit:disabled { opacity: .65; cursor: wait; }

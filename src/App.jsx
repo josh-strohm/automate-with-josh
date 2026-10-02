@@ -448,12 +448,13 @@ const FREE_CRM_CONTACT_FORM = {
   accessCode: 'Mnpom0RIpNiN1z0w',
   scriptUrl: 'https://api.freecrm.com/embed/v1/form.js',
   fields: {
-    businessName: '86a75143-ab63-4a83-875c-d9659965178c',
-    fullName: '0feb6edb-4893-487b-8385-78bfff5ccf0b',
-    email: '22cb1c69-be57-486d-b188-1484d4bce75b',
-    phone: 'c13f6ad2-edc2-4a33-8691-5d4e8f5601bc',
-    businessWebsite: 'cf0648e0-7530-4818-9794-ef05115b5cc3',
-    message: '728d5b8d-3756-47fb-998c-b59a1a295049',
+    businessName: 'business-name',
+    fullName: 'contact-name',
+    email: 'email',
+    phone: 'contact-phone',
+    businessWebsite: 'business-website',
+    message: 'inquiry-details',
+    webForm: 'web-form',
   },
 };
 
@@ -481,24 +482,41 @@ function loadFreeCrmForms() {
 
 function ContactPage() {
   const formRef = useRef(null);
+  const crmAttachReadyRef = useRef(false);
   const [formData, setFormData] = useState({ businessName: '', businessWebsite: '', fullName: '', email: '', phone: '', message: '', consent: false });
   const [status, setStatus] = useState('IDLE');
+  const [errorMessage, setErrorMessage] = useState('');
+  const showForm = status !== 'SUCCESS';
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
     setFormData((previous) => ({ ...previous, [name]: type === 'checkbox' ? checked : value }));
+    if (status === 'ERROR') {
+      setStatus('IDLE');
+      setErrorMessage('');
+    }
   };
 
   useEffect(() => {
-    if (status !== 'IDLE') return undefined;
+    if (!showForm) return undefined;
     const formEl = formRef.current;
     if (!formEl) return undefined;
 
     let attachHandle;
     let cancelled = false;
+    crmAttachReadyRef.current = false;
 
-    const onSubmitStart = () => setStatus('SUBMITTING');
-    formEl.addEventListener('submit', onSubmitStart);
+    const onSubmitCapture = (event) => {
+      event.preventDefault();
+      if (!crmAttachReadyRef.current) {
+        setErrorMessage('The contact form is still loading. Please wait a moment and try again.');
+        setStatus('ERROR');
+        return;
+      }
+      setErrorMessage('');
+      setStatus('SUBMITTING');
+    };
+    formEl.addEventListener('submit', onSubmitCapture, { capture: true });
 
     loadFreeCrmForms()
       .then((CRMForms) => {
@@ -509,22 +527,39 @@ function ContactPage() {
           showSuccess: false,
           onSuccess: () => {
             setFormData({ businessName: '', businessWebsite: '', fullName: '', email: '', phone: '', message: '', consent: false });
+            setErrorMessage('');
             setStatus('SUCCESS');
           },
-          onError: () => setStatus('ERROR'),
+          onError: (payload) => {
+            let message = '';
+            if (payload?.error === 'captcha_required') {
+              message = 'Please complete the captcha before sending.';
+            } else if (typeof payload?.error === 'string') {
+              message = payload.error;
+            } else if (typeof payload?.detail === 'string') {
+              message = payload.detail;
+            }
+            setErrorMessage(
+              message || 'Something went wrong while sending your note. Please try again or email me directly.',
+            );
+            setStatus('ERROR');
+          },
         });
+        crmAttachReadyRef.current = true;
       })
       .catch((error) => {
         console.error(error);
+        setErrorMessage('The contact form could not be loaded. Please refresh the page or email me directly.');
         setStatus('ERROR');
       });
 
     return () => {
       cancelled = true;
-      formEl.removeEventListener('submit', onSubmitStart);
+      crmAttachReadyRef.current = false;
+      formEl.removeEventListener('submit', onSubmitCapture, { capture: true });
       attachHandle?.destroy();
     };
-  }, [status]);
+  }, [showForm]);
 
   return (
     <section className="page-width page-top contact-layout">
@@ -539,7 +574,8 @@ function ContactPage() {
         {status === 'SUCCESS' ? (
           <div className="form-success" role="status"><span className="success-icon"><Check size={24} /></span><h2>Thanks for reaching out.</h2><p>Your note is on its way. I’ll be in touch soon.</p><button className="text-link" onClick={() => setStatus('IDLE')}>Send another message <ArrowRight size={16} /></button></div>
         ) : (
-          <form ref={formRef}>
+          <form ref={formRef} noValidate>
+            <input type="hidden" data-crmid={FREE_CRM_CONTACT_FORM.fields.webForm} defaultValue="Web Form" />
             <div className="form-heading"><h2>Tell me about the work</h2><p>Fields marked * are required.</p></div>
             <div className="form-grid">
               <label>Business name *<input required name="businessName" value={formData.businessName} onChange={handleChange} autoComplete="organization" data-crmid={FREE_CRM_CONTACT_FORM.fields.businessName} /></label>
@@ -553,7 +589,7 @@ function ContactPage() {
             <div data-crm-captcha />
             <span className="visually-hidden" role="status" aria-live="polite">{status === 'SUBMITTING' ? 'Sending your message.' : ''}</span>
             <button className="button form-submit" type="submit" disabled={status === 'SUBMITTING'} aria-busy={status === 'SUBMITTING'}>{status === 'SUBMITTING' ? 'Sending…' : 'Send your note'} <ArrowRight size={17} aria-hidden="true" /></button>
-            {status === 'ERROR' && <p className="form-error" role="alert">Something went wrong while sending your note. Please try again or email me directly.</p>}
+            {status === 'ERROR' && <p className="form-error" role="alert">{errorMessage || 'Something went wrong while sending your note. Please try again or email me directly.'}</p>}
           </form>
         )}
       </div>
