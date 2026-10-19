@@ -1,0 +1,65 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/react/LeadForm';
+import { contact } from '../data/site';
+import type { InterestValue } from '../data/site';
+
+const interestParam = Astro.url.searchParams.get('interest');
+const allowed: InterestValue[] = [
+  'missed-call-text-back',
+  'ai-receptionist',
+  'crm-follow-up',
+  'conversational-booking',
+  'custom-automation',
+  'not-sure',
+];
+const defaultInterest = allowed.includes(interestParam as InterestValue)
+  ? (interestParam as InterestValue)
+  : 'not-sure';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Strohm Partners LLC',
+  url: 'https://www.strohmpartners.com/contact',
+  email: contact.email,
+  telephone: contact.phoneTel,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '911 23rd Ave.',
+    addressLocality: 'Altoona',
+    addressRegion: 'PA',
+    postalCode: '16601',
+    addressCountry: 'US',
+  },
+  areaServed: ['Central Pennsylvania', 'United States'],
+};
+---
+
+<BaseLayout title="Contact | Strohm Partners" description="Book a discovery call with Strohm Partners." jsonLd={jsonLd}>
+  <section class="py-20 md:py-28">
+    <div class="container grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5 md:sticky md:top-28 md:self-start">
+        <h1 class="text-4xl font-semibold tracking-tight md:text-5xl">Book a call</h1>
+        <h2 class="mt-8 text-lg font-semibold">What happens next</h2>
+        <ol class="mt-4 list-decimal space-y-3 pl-5 text-muted-foreground leading-relaxed">
+          <li>You submit the form (or email {contact.email}).</li>
+          <li>We reply within one business day to schedule a short discovery call.</li>
+          <li>If we’re a fit, we’ll outline a recommended first build and quote.</li>
+        </ol>
+        <div class="mt-8 space-y-2 text-sm text-muted-foreground">
+          <p><a href={`mailto:${contact.email}`} class="text-primary hover:underline">{contact.email}</a></p>
+          <p><a href={`tel:${contact.phoneTel}`} class="text-primary hover:underline">{contact.phone}</a></p>
+          <p>{contact.address}</p>
+        </div>
+      </div>
+      <div class="lg:col-span-7">
+        <div class="rounded-2xl border border-border bg-card p-6 shadow-elegant md:p-8">
+          <LeadForm client:load page="/contact" defaultInterest={defaultInterest} />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

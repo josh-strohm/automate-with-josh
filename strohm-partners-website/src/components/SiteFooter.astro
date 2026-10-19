@@ -1,0 +1,46 @@
+---
+import { contact } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border py-12">
+  <div class="container flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+    <div class="space-y-3">
+      <a href="/" class="font-display text-lg font-semibold tracking-tight">
+        Strohm <span class="font-normal text-muted-foreground">Partners</span>
+      </a>
+      <p class="max-w-sm text-sm text-muted-foreground">
+        AI lead response and follow-up systems for service businesses.
+      </p>
+      <p class="text-sm text-muted-foreground">Altoona, PA · Serving Central PA & beyond</p>
+    </div>
+
+    <div class="grid gap-8 sm:grid-cols-2">
+      <div class="space-y-2 text-sm">
+        <p class="font-medium text-foreground">Contact</p>
+        <a href={`mailto:${contact.email}`} class="block text-muted-foreground hover:text-primary">{contact.email}</a>
+        <a href={`tel:${contact.phoneTel}`} class="block text-muted-foreground hover:text-primary">{contact.phone}</a>
+        <p class="text-muted-foreground">{contact.address}</p>
+      </div>
+      <div class="space-y-2 text-sm">
+        <p class="font-medium text-foreground">Legal</p>
+        <a href="/privacy-policy" class="block text-muted-foreground hover:text-primary">Privacy Policy</a>
+        <a href="/terms" class="block text-muted-foreground hover:text-primary">Terms of Service</a>
+        <a
+          href="https://www.linkedin.com/company/strohm-partners"
+          class="inline-flex items-center gap-2 text-muted-foreground hover:text-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-10 border-t border-border pt-6 text-center text-xs text-muted-foreground md:text-left">
+    <p>© {year} {contact.company}</p>
+    <p class="mt-2 max-w-3xl">
+      Ranges shown are typical for managed builds in 2026 and vary by call volume, integrations, and compliance needs. We’ll provide a written quote after discovery.
+    </p>
+  </div>
+</footer>

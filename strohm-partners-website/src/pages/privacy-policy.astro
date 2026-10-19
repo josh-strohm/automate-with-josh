@@ -1,0 +1,59 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { contact } from '../data/site';
+---
+
+<BaseLayout title="Privacy Policy | Strohm Partners" description="Privacy Policy for Strohm Partners LLC.">
+  <article class="legal-content container max-w-3xl space-y-4 py-20 text-muted-foreground leading-relaxed md:py-28">
+    <h1 class="text-4xl font-semibold tracking-tight text-foreground">Privacy Policy</h1>
+    <p>
+      Strohm Partners LLC (“we,” “us,” or “our”) runs this website and provides managed AI lead-response systems, consulting, practical advice, and systems integration for service businesses. We take reasonable steps to protect the information you share with us.
+    </p>
+    <p>This policy describes what we collect, how we use it, when we share it, and the choices you have.</p>
+    <p><strong>Last updated:</strong> May 19, 2026</p>
+
+    <h2>Information We Collect</h2>
+    <p>We collect information we need to respond to inquiries, provide our services, and keep this website running.</p>
+    <p><strong>Information you provide:</strong> When you use our contact form, we collect your name, email address, phone number, company information, service interest, and details about the work you want help with. Form submissions are processed through our automation stack (including n8n workflow hosting) to route inquiries to our team. If you hire us, we collect the billing information needed to provide the service. Payments go through third-party processors such as Stripe; we do not store your credit card number on our servers.</p>
+    <p><strong>Information collected automatically:</strong> We may collect browser information, IP address, page views, interaction details, cookies, and similar technologies so we can understand site use and fix problems. You can manage cookies in your browser.</p>
+    <p><strong>Service delivery data:</strong> When we operate missed-call text-back, AI reception, CRM follow-up, or related automations on your behalf, we may process call metadata, message content, and CRM records according to your agreement and applicable law. That processing is governed by your service agreement as well as this policy.</p>
+
+    <h2>How We Use Your Information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+      <li>Respond to inquiries, schedule calls, and scope potential work.</li>
+      <li>Deliver and improve our consulting, integration, and managed AI lead-response services.</li>
+      <li>Operate automations you authorize (SMS, voice, CRM workflows, and booking flows).</li>
+      <li>Manage client accounts, process payments, and send invoices.</li>
+      <li>Protect the security and reliability of our systems.</li>
+      <li>Meet legal and regulatory requirements, including financial reporting and telecommunications compliance where applicable.</li>
+    </ul>
+
+    <h2>Information Sharing and Disclosure</h2>
+    <p>We do not sell, rent, or trade your personal information. We share it only when someone needs it to help us operate the business or when the law requires it.</p>
+    <p><strong>Service providers:</strong> We may share information with vendors that support hosting, email, customer management, payments, SMS/voice carriers, CRM platforms, and workflow automation (including Stripe, telecommunications providers, and n8n). We require those vendors to protect the information they receive.</p>
+    <p><strong>Legal requirements:</strong> We may disclose information in response to a law, court order, government request, or other legal process.</p>
+
+    <h2>Data Security</h2>
+    <p>We use administrative, technical, and physical steps to protect personal information from loss, theft, unauthorized access, and unauthorized changes. No online service or storage system is completely secure, so we cannot promise absolute security.</p>
+
+    <h2>Your Rights and Choices</h2>
+    <p>Depending on where you live, you may ask for a copy of the information we have about you, correct inaccurate information, or request deletion subject to legal and billing exceptions.</p>
+    <p>You can stop marketing emails at any time by using the unsubscribe link or contacting us directly.</p>
+
+    <h2>Children’s Privacy</h2>
+    <p>Our website and services are for businesses and adults. We do not knowingly collect personal information from anyone under 18.</p>
+
+    <h2>Updates to This Policy</h2>
+    <p>We may update this Privacy Policy as our services change or as the law requires. We will post the revised policy here and update the date.</p>
+
+    <h2>Contact us</h2>
+    <p>{contact.company}<br />
+      Email: <a href={`mailto:${contact.email}`}>{contact.email}</a><br />
+      Phone: <a href={`tel:${contact.phoneTel}`}>{contact.phone}</a><br />
+      Address: {contact.address}</p>
+  </article>
+</BaseLayout>
+

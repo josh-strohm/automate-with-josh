@@ -1,0 +1,46 @@
+---
+import MobileNav from './react/MobileNav';
+import { services } from '../data/services';
+---
+
+<header class="fixed top-0 z-50 w-full border-b border-border/80 bg-background/70 backdrop-blur-md">
+  <div class="container flex h-16 items-center justify-between gap-4">
+    <a href="/" class="font-display text-lg font-semibold tracking-tight sm:min-w-[120px]">
+      Strohm <span class="font-normal text-muted-foreground">Partners</span>
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex">
+      <div class="group relative">
+        <button
+          type="button"
+          class="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        >
+          Services
+          <svg class="h-4 w-4 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
+        <div
+          class="invisible absolute left-0 top-full z-50 mt-2 min-w-[240px] translate-y-1 rounded-xl border border-border bg-card p-2 opacity-0 shadow-elegant transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
+        >
+          <a href="/services" class="block rounded-lg px-3 py-2 text-sm hover:bg-secondary">Overview</a>
+          {services.map((service) => (
+            <a href={`/services/${service.slug}`} class="block rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground">
+              {service.shortTitle}
+            </a>
+          ))}
+        </div>
+      </div>
+      <a href="/about" class="text-sm text-muted-foreground transition-colors hover:text-foreground">About</a>
+      <a href="/contact" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Contact</a>
+      <a
+        href="/contact"
+        class="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+      >
+        Book a call
+      </a>
+    </nav>
+
+    <MobileNav client:load />
+  </div>
+</header>

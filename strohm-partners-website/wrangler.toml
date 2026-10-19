@@ -1,0 +1,7 @@
+name = "strohm-partners-website"
+compatibility_date = "2026-10-19"
+pages_build_output_dir = "dist"
+
+[vars]
+# Override in Cloudflare dashboard for production if the webhook URL changes.
+PUBLIC_CONTACT_API = "/api/contact"

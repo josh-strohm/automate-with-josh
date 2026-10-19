@@ -1,0 +1,183 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqSection from '../components/FaqSection';
+import { homeStats, industries, contact } from '../data/site';
+import { services, serviceTeasers } from '../data/services';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Strohm Partners LLC',
+    url: 'https://www.strohmpartners.com',
+    email: contact.email,
+    telephone: contact.phoneTel,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '911 23rd Ave.',
+      addressLocality: 'Altoona',
+      addressRegion: 'PA',
+      postalCode: '16601',
+      addressCountry: 'US',
+    },
+    areaServed: ['Central Pennsylvania', 'United States'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Strohm Partners LLC',
+    description:
+      'Managed AI lead-response and follow-up systems for service businesses.',
+    url: 'https://www.strohmpartners.com',
+  },
+];
+---
+
+<BaseLayout
+  title="Strohm Partners | AI lead response for service businesses"
+  description="Missed-call text-back, AI reception, and CRM follow-up built for HVAC, plumbing, cleaning, and local service companies. Based in Central Pennsylvania, serving clients nationwide."
+  jsonLd={jsonLd}
+>
+  <section class="relative overflow-hidden border-b border-border bg-hero-atx py-24 md:py-32">
+    <div class="container animate-fade-up">
+      <p class="text-sm uppercase tracking-widest text-muted-foreground">Strohm Partners · Central Pennsylvania</p>
+      <h1 class="mt-4 max-w-4xl text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+        When you miss the call, you miss the job.
+      </h1>
+      <p class="mt-6 max-w-3xl text-base text-muted-foreground md:text-lg leading-relaxed">
+        We build and run speed-to-lead systems for service businesses — missed-call text-back, managed AI reception, and follow-up that actually reaches your CRM. You stay on the truck; we make sure inquiries get answered and booked.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="/contact" class="inline-flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary/90">Book a call</a>
+        <a href="/services" class="inline-flex h-12 items-center justify-center rounded-lg border border-border px-8 text-sm font-medium hover:border-primary/50 hover:bg-secondary">View services</a>
+      </div>
+      <div class="mt-12 grid gap-4 rounded-2xl border border-border bg-card/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
+        {homeStats.map((stat) => (
+          <div class="rounded-xl border border-border/60 bg-background/40 p-4">
+            <p class="text-2xl font-semibold text-primary md:text-3xl">{stat.value}</p>
+            <p class="mt-2 text-sm text-muted-foreground">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-24 md:py-32">
+    <div class="container grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <p class="text-sm uppercase tracking-widest text-muted-foreground">Sound familiar?</p>
+        <h2 class="mt-3 text-3xl font-semibold md:text-4xl">The leaks that cost you jobs every week</h2>
+        <p class="mt-6 text-muted-foreground leading-relaxed">
+          You don’t need another app login. You need a system that responds, qualifies, and follows up — without you babysitting it.
+        </p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+        {[
+          ['Leads sit while you’re on a job', 'A homeowner calls while you’re under a sink. Voicemail goes unanswered. By the time you call back, they’ve already booked someone else.'],
+          ['The same questions, all day', '“Are you available?” “What’s the service call fee?” “Did you get my message?” Your team answers by hand — again and again.'],
+          ['Nothing talks to anything', 'The lead lives in your phone, your spouse’s notes, and a spreadsheet. Follow-ups slip. Quotes go cold.'],
+          ['Follow-up that never happens', 'You meant to text back every estimate. You meant to remind every booked job. The day got away from you.'],
+        ].map(([title, body]) => (
+          <article class="rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/50">
+            <h3 class="text-lg font-semibold">{title}</h3>
+            <p class="mt-3 text-sm text-muted-foreground leading-relaxed">{body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-24 md:py-32">
+    <div class="container">
+      <p class="text-sm uppercase tracking-widest text-muted-foreground">What we build</p>
+      <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Five ways we help service businesses capture more work</h2>
+      <div class="mt-10 grid gap-4 md:grid-cols-2">
+        {services.map((service) => (
+          <a href={`/services/${service.slug}`} class="group rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/50">
+            <h3 class="text-lg font-semibold group-hover:text-primary">{service.shortTitle}</h3>
+            <p class="mt-3 text-sm text-muted-foreground leading-relaxed">{serviceTeasers[service.slug]}</p>
+          </a>
+        ))}
+      </div>
+      <p class="mt-8 text-muted-foreground">
+        Not sure where to start? Most clients begin with <strong class="text-foreground">missed-call text-back</strong> and <strong class="text-foreground">CRM follow-up</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-b border-border bg-secondary/40 py-24 md:py-32">
+    <div class="container">
+      <p class="text-sm uppercase tracking-widest text-muted-foreground">How it works</p>
+      <h2 class="mt-3 text-3xl font-semibold md:text-4xl">From first call to live system</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {[
+          ['Discover', 'We map how leads arrive today — phone, web form, Google, referrals — and where they fall through.'],
+          ['Build & integrate', 'We configure workflows, calendars, and handoffs to a human when it matters. You approve scripts and escalation rules before go-live.'],
+          ['Run & improve', 'We monitor, tune, and maintain. When your business changes, the system changes with you.'],
+        ].map(([title, body], i) => (
+          <article class="rounded-xl border border-border bg-card p-6">
+            <p class="text-sm font-mono text-primary">Step {i + 1}</p>
+            <h3 class="mt-2 text-xl font-semibold">{title}</h3>
+            <p class="mt-3 text-sm text-muted-foreground leading-relaxed">{body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-24 md:py-32">
+    <div class="container">
+      <p class="text-sm uppercase tracking-widest text-muted-foreground">Selected work</p>
+      <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Systems that hold up on a busy day</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <article class="rounded-xl border border-border bg-card p-6">
+          <h3 class="text-xl font-semibold">JT3 Hauling</h3>
+          <p class="mt-1 text-sm text-primary">Website + lead automation</p>
+          <p class="mt-4 text-sm text-muted-foreground leading-relaxed">
+            Before: new inquiries could wait until the owner was back from a job. After: the lead gets an automatic reply, and the owner gets the details right away.
+          </p>
+        </article>
+        <article class="rounded-xl border border-border bg-card p-6">
+          <h3 class="text-xl font-semibold">Mrs. Red Bottoms Cleaning</h3>
+          <p class="mt-1 text-sm text-primary">Lead follow-up</p>
+          <p class="mt-4 text-sm text-muted-foreground leading-relaxed">
+            Cleaning inquiries get a fast, professional response and a clear path to book — without the owner living in their inbox.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-24 md:py-32">
+    <div class="container text-center">
+      <p class="text-sm uppercase tracking-widest text-muted-foreground">Who we work with</p>
+      <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Built for businesses that run on the phone and the calendar</h2>
+      <div class="mt-10 flex flex-wrap justify-center gap-3">
+        {industries.map((chip) => (
+          <span class="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-primary/50 hover:shadow-glow">{chip}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-24 md:py-32">
+    <div class="container max-w-3xl">
+      <h2 class="text-3xl font-semibold md:text-4xl">Fair questions</h2>
+      <div class="mt-8">
+        <FaqSection client:visible />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32">
+    <div class="container rounded-2xl border border-border bg-card p-8 text-center md:p-12">
+      <h2 class="text-3xl font-semibold md:text-4xl">Tell us how leads come in today.</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-muted-foreground">
+        We’ll look at your setup and recommend a sensible first build — usually speed-to-lead or CRM follow-up.
+      </p>
+      <a href="/contact" class="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary/90">Book a call</a>
+    </div>
+  </section>
+</BaseLayout>
