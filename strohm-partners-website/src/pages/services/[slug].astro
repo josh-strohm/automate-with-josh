@@ -3,7 +3,7 @@ export const prerender = true;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ServiceFaq from '../../components/ServiceFaq';
-import { services, getServiceBySlug } from '../../data/services';
+import { services } from '../../data/services';
 
 export function getStaticPaths() {
   return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
@@ -13,7 +13,7 @@ const { service } = Astro.props;
 ---
 
 <BaseLayout title={`${service.title} | Strohm Partners`} description={service.metaDescription}>
-  <section class="border-b border-border bg-hero-radial py-20 md:py-28">
+  <section class="border-b border-border bg-hero-atx py-20 md:py-28">
     <div class="container max-w-4xl">
       <p class="text-sm uppercase tracking-widest text-muted-foreground">{service.shortTitle}</p>
       <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">{service.h1}</h1>

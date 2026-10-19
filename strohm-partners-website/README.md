@@ -38,7 +38,7 @@ Copy `.env.example` to `.env` for local overrides.
 
 ## Contact form
 
-The browser posts JSON to **`/api/contact`** (same origin). The Astro API route forwards the payload to the n8n webhook defined in the [website build plan](../docs/website-build-plan.md) (see `src/data/site.ts` for the default URL).
+The browser posts JSON to **`/api/contact`** (same origin). In production, the Cloudflare Pages Function at `functions/api/contact.ts` forwards the payload to the n8n webhook (default URL in `src/data/site.ts`). In local dev, Vite proxies `/api/contact` to the same webhook.
 
 This avoids browser CORS issues with the n8n endpoint. Test locally:
 

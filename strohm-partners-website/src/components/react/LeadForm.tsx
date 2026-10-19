@@ -101,12 +101,12 @@ export default function LeadForm({ page, defaultInterest = 'not-sure' }: LeadFor
         <div className="space-y-2">
           <Label htmlFor="name">Full name *</Label>
           <Input id="name" name="name" required autoComplete="name" />
-          {fieldErrors.name && <p className="text-sm text-red-400">{fieldErrors.name}</p>}
+          {fieldErrors.name && <p className="text-sm text-destructive">{fieldErrors.name}</p>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email *</Label>
           <Input id="email" name="email" type="email" required autoComplete="email" />
-          {fieldErrors.email && <p className="text-sm text-red-400">{fieldErrors.email}</p>}
+          {fieldErrors.email && <p className="text-sm text-destructive">{fieldErrors.email}</p>}
         </div>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
@@ -139,7 +139,7 @@ export default function LeadForm({ page, defaultInterest = 'not-sure' }: LeadFor
             </button>
           ))}
         </div>
-        {fieldErrors.interest && <p className="text-sm text-red-400">{fieldErrors.interest}</p>}
+        {fieldErrors.interest && <p className="text-sm text-destructive">{fieldErrors.interest}</p>}
       </div>
 
       <div className="space-y-2">
@@ -148,7 +148,7 @@ export default function LeadForm({ page, defaultInterest = 'not-sure' }: LeadFor
       </div>
 
       {status === 'error' && (
-        <p className="rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+        <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive-foreground">
           Something went wrong sending your message. Email us at{' '}
           <a className="text-primary underline" href={`mailto:${contact.email}`}>{contact.email}</a> or call{' '}
           <a className="text-primary underline" href={`tel:${contact.phoneTel}`}>{contact.phone}</a>.
