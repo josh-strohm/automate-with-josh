@@ -1,0 +1,67 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { contact } from '../data/site';
+---
+
+<BaseLayout title="Terms of Service | Strohm Partners" description="Terms of Service for Strohm Partners LLC.">
+  <article class="legal-content container max-w-3xl space-y-4 py-20 text-muted-foreground leading-relaxed md:py-28">
+    <h1 class="text-4xl font-semibold tracking-tight text-foreground">Terms of Service</h1>
+    <p>Welcome to Strohm Partners. These Terms govern your use of our website, services, and digital systems.</p>
+    <p>By using our website or hiring us, you agree to these Terms. If you do not agree, please do not use the website or our services.</p>
+    <p><strong>Last updated:</strong> May 19, 2026</p>
+
+    <h2>Services Offered</h2>
+    <p>Strohm Partners LLC provides managed AI lead-response and follow-up systems for service businesses, including:</p>
+    <ul>
+      <li>Missed-call text-back and speed-to-lead automation.</li>
+      <li>Managed AI reception (voice) with human escalation paths.</li>
+      <li>CRM setup, pipeline design, and email/SMS follow-up sequences.</li>
+      <li>Conversational booking flows tied to qualification workflows.</li>
+      <li>Custom agents, multi-step automations, and full-office integration projects.</li>
+      <li>AI Tools Assessments with workflow review, tool recommendations, quick-start plans, and savings analysis.</li>
+      <li>Process redesign, simple automation, and knowledge systems.</li>
+      <li>Custom AI workflows, implementation projects, and team training.</li>
+      <li>Ongoing strategy, implementation support, and system maintenance retainers.</li>
+    </ul>
+    <p>The exact work, milestones, deadlines, and deliverables will appear in the service agreement or statement of work you sign with Strohm Partners LLC.</p>
+
+    <h2>Fees and Payments</h2>
+    <p>You agree to pay the fees listed in your invoice, statement of work, or consulting agreement. We accept payment by Stripe or bank transfer, as described in your billing agreement.</p>
+    <p><strong>Milestone billing:</strong> Custom consulting and integration projects are usually billed in stages, such as discovery, build, staging, and launch.</p>
+    <p><strong>Retainers and subscriptions:</strong> Ongoing support, system updates, prompt tuning, workflow monitoring, and managed automation are billed in advance each month or year.</p>
+    <p><strong>Late payments:</strong> We may pause active integrations or consulting work while an invoice remains overdue.</p>
+
+    <h2>Intellectual Property and Ownership</h2>
+    <p>After you pay in full for the agreed work, Strohm Partners LLC transfers to you its rights and interest in custom prompt frameworks, database configurations, integrations, and code created specifically for your business.</p>
+    <p>Tools you already use, open-source libraries, and third-party services such as Make.com, Zapier, Webflow, Stripe, telecommunications carriers, CRM platforms, and workflow hosts remain governed by their own licenses. You are responsible for maintaining those accounts and subscriptions.</p>
+
+    <h2>Client Responsibilities</h2>
+    <p>To keep a project moving, you agree to:</p>
+    <ul>
+      <li>Provide timely access to the accounts, files, and instructions we need.</li>
+      <li>Review deliverables and send feedback within the agreed timeline.</li>
+      <li>Keep active subscriptions for third-party services used in your workflows.</li>
+      <li>Comply with applicable laws for SMS, voice, and marketing outreach in your jurisdiction.</li>
+    </ul>
+
+    <h2>Disclaimer of Warranties</h2>
+    <p>Our systems and services are provided as-is and as available. We work to build reliable workflows, but we cannot guarantee that third-party APIs, AI models, or automated pipelines will run without interruptions. Their availability depends on outside providers.</p>
+
+    <h2>Limitation of Liability</h2>
+    <p>To the fullest extent allowed by law, Strohm Partners LLC is not liable for indirect, incidental, special, consequential, or punitive damages, or for lost profits, data, or business opportunities resulting from your use of our services or website.</p>
+
+    <h2>Governing Law</h2>
+    <p>These Terms and any dispute about your use of our website or services are governed by the laws of the State of Delaware, without regard to its conflict-of-law rules.</p>
+
+    <h2>Changes to These Terms</h2>
+    <p>We may change these Terms from time to time. We will post changes here with a new last-updated date. If you continue using our services after a change takes effect, you accept the revised Terms.</p>
+
+    <h2>Contact us</h2>
+    <p>{contact.company}<br />
+      Email: <a href={`mailto:${contact.email}`}>{contact.email}</a><br />
+      Phone: <a href={`tel:${contact.phoneTel}`}>{contact.phone}</a><br />
+      Address: {contact.address}</p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,86 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceFaq from '../../components/ServiceFaq';
+import { services, getServiceBySlug } from '../../data/services';
+
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+const { service } = Astro.props;
+---
+
+<BaseLayout title={`${service.title} | Strohm Partners`} description={service.metaDescription}>
+  <section class="border-b border-border bg-hero-radial py-20 md:py-28">
+    <div class="container max-w-4xl">
+      <p class="text-sm uppercase tracking-widest text-muted-foreground">{service.shortTitle}</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">{service.h1}</h1>
+      <p class="mt-6 text-lg text-muted-foreground leading-relaxed">{service.lede}</p>
+      <a href={`/contact?interest=${service.interest}`} class="mt-8 inline-flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-primary-foreground">
+        {service.ctaLabel ?? 'Book a call'}
+      </a>
+    </div>
+  </section>
+
+  <section class="border-b border-border py-16 md:py-24">
+    <div class="container grid gap-12 lg:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-semibold">Who it’s for</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">{service.whoFor}</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold">What you get</h2>
+        <ul class="mt-4 space-y-3 text-muted-foreground">
+          {service.deliverables.map((item) => (
+            <li class="flex gap-2"><span class="text-primary">•</span><span>{item}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border bg-secondary/40 py-16">
+    <div class="container grid gap-6 sm:grid-cols-2 max-w-3xl">
+      <div class="rounded-xl border border-border bg-card p-6 text-center">
+        <p class="text-sm uppercase tracking-widest text-muted-foreground">Setup</p>
+        <p class="mt-2 font-mono text-3xl text-primary">{service.setupRange}</p>
+      </div>
+      <div class="rounded-xl border border-border bg-card p-6 text-center">
+        <p class="text-sm uppercase tracking-widest text-muted-foreground">Monthly</p>
+        <p class="mt-2 font-mono text-3xl text-primary">{service.monthlyRange}</p>
+      </div>
+      <p class="sm:col-span-2 text-center text-sm text-muted-foreground">Final quote depends on volume, integrations, and compliance requirements.</p>
+    </div>
+  </section>
+
+  {(service.caveat || service.note) && (
+    <section class="border-b border-border py-16 md:py-24">
+      <div class="container max-w-3xl rounded-xl border border-border bg-card p-6 md:p-8">
+        {service.caveatTitle && <h2 class="text-xl font-semibold">{service.caveatTitle}</h2>}
+        {service.caveat && <p class="mt-4 text-muted-foreground leading-relaxed" set:html={service.caveat.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>')} />}
+        {service.note && <p class="mt-4 text-muted-foreground leading-relaxed" set:html={service.note.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>')} />}
+      </div>
+    </section>
+  )}
+
+  {service.miniFaq && service.miniFaq.length > 0 && (
+    <section class="border-b border-border py-16 md:py-24">
+      <div class="container max-w-3xl">
+        <h2 class="text-2xl font-semibold">Common questions</h2>
+        <div class="mt-6">
+          <ServiceFaq client:visible items={service.miniFaq} />
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="py-20">
+    <div class="container text-center">
+      <a href={`/contact?interest=${service.interest}`} class="inline-flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-primary-foreground">
+        {service.ctaLabel ?? 'Book a call'}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

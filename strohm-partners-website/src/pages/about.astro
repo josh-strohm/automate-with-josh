@@ -1,0 +1,43 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About | Strohm Partners"
+  description="Strohm Partners helps service businesses capture and follow up on leads. Based in Altoona, Pennsylvania."
+>
+  <section class="border-b border-border bg-hero-radial py-20 md:py-28">
+    <div class="container max-w-3xl">
+      <p class="text-sm uppercase tracking-widest text-muted-foreground">About</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Practical systems for owners who are tired of losing leads to voicemail</h1>
+      <div class="mt-8 space-y-4 text-muted-foreground leading-relaxed md:text-lg">
+        <p>
+          Strohm Partners is a solo agency led by <strong class="text-foreground">Josh Strohm</strong>. We help service businesses in Central Pennsylvania and across the country respond faster, follow up consistently, and stop retyping the same information into three different apps.
+        </p>
+        <p>
+          You’ve seen the AI tool lists. We’re the team that <strong class="text-foreground">chooses the stack, wires it together, and keeps it running</strong> — in plain English, with escalation paths that respect real jobsite realities.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28">
+    <div class="container grid gap-6 md:grid-cols-3">
+      {[
+        ['Integration over shelfware', 'If it doesn’t connect to how you sell, we don’t ship it.'],
+        ['Honest scope', 'We’ll tell you when a cheap tool is enough and when it isn’t.'],
+        ['Maintain what we build', 'Go-live isn’t the end of the project.'],
+      ].map(([title, body]) => (
+        <article class="rounded-xl border border-border bg-card p-6">
+          <h2 class="text-lg font-semibold">{title}</h2>
+          <p class="mt-3 text-sm text-muted-foreground leading-relaxed">{body}</p>
+        </article>
+      ))}
+    </div>
+    <div class="container mt-12 text-center">
+      <a href="/contact" class="inline-flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-sm font-medium text-primary-foreground">Book a call</a>
+    </div>
+  </section>
+</BaseLayout>

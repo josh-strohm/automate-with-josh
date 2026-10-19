@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  --font-family-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-family-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --shadow-elegant: var(--shadow-elegant);
+  --shadow-glow: var(--shadow-glow);
+}
+
+:root {
+  --background: 0 0% 4%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 7%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 7%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 70 83% 55%;
+  --primary-foreground: 0 0% 4%;
+  --primary-glow: 70 88% 65%;
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 12%;
+  --muted-foreground: 0 0% 80%;
+  --accent: 0 0% 12%;
+  --accent-foreground: 0 0% 98%;
+  --border: 0 0% 16%;
+  --input: 0 0% 16%;
+  --ring: 70 83% 55%;
+  --radius: 0.75rem;
+
+  --gradient-hero: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    hsl(70 83% 55% / 0.15),
+    transparent 70%
+  );
+  --gradient-mesh:
+    radial-gradient(at 40% 20%, hsl(70 83% 55% / 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsl(220 60% 50% / 0.06) 0px, transparent 50%);
+  --shadow-elegant: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
+  --shadow-glow: 0 0 40px hsl(70 83% 55% / 0.15);
+}
+
+@utility container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 1.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-family-display);
+  }
+}
+
+@layer utilities {
+  .bg-hero-radial {
+    background-image: var(--gradient-hero);
+  }
+
+  .bg-mesh {
+    background-image: var(--gradient-mesh);
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out both;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-up {
+      animation: none;
+    }
+  }
+
+  .legal-content h2 {
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+  }
+
+  .legal-content ul {
+    margin-top: 1rem;
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+
+  .legal-content li {
+    margin-top: 0.5rem;
+  }
+
+  .legal-content a {
+    color: hsl(var(--primary));
+  }
+
+  .legal-content a:hover {
+    text-decoration: underline;
+  }
+}
